@@ -1,0 +1,2559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>控糖健康科普 — 科学控糖，健康生活</title>
+    <link rel="icon" type="image/png" href="xiaoxinkeji.png">
+    <link rel="apple-touch-icon" href="xiaoxinkeji.png">
+    <meta name="description" content="控糖健康科普——科学控糖知识、饮食建议、运动指南、血糖记录工具、食物GI查询。21天控糖饮食计划课程，1对1控糖指导。">
+    <meta name="keywords" content="糖尿病,控糖,血糖,糖尿病饮食,GI值,血糖仪,控糖食谱,糖尿病科普,糖化血红蛋白,胰岛素抵抗">
+    <meta property="og:title" content="控糖健康科普 — 科学控糖，健康生活">
+    <meta property="og:description" content="从饮食、运动到血糖监测，一站式控糖知识平台。免费BMI计算器、血糖记录器、食物GI查询。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="xiaoxinkeji.png">
+    <meta name="description" content="科学控糖健康科普网站，提供糖尿病防治知识、饮食建议、运动指南、血糖管理工具。了解1型2型糖尿病区别、高危人群、常见症状、控糖目标，掌握科学控糖方法。">
+    <meta name="keywords" content="糖尿病,控糖,血糖,糖尿病饮食,糖尿病运动,糖尿病科普,血糖监测,糖化血红蛋白,胰岛素抵抗">
+    <meta property="og:title" content="控糖健康科普 — 科学控糖，健康生活">
+    <meta property="og:description" content="了解糖尿病防治知识，掌握科学控糖方法。含BMI计算器、血糖记录器、食物GI查询等实用工具。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:site_name" content="控糖健康科普">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="控糖健康科普 — 科学控糖，健康生活">
+    <meta name="twitter:description" content="了解糖尿病防治知识，掌握科学控糖方法。含BMI计算器、血糖记录器、食物GI查询等实用工具。">
+    <style>
+        /* ===== CSS 变量 & 全局重置 ===== */
+        :root {
+            --green-900: #1b5e20;
+            --green-700: #2e7d32;
+            --green-500: #43a047;
+            --green-300: #81c784;
+            --green-100: #c8e6c9;
+            --green-50: #e8f5e9;
+            --bg-green: #f6fbf6;
+            --bg-white: #ffffff;
+            --warn-orange: #f57c00;
+            --warn-bg: #fff3e0;
+            --text-dark: #333333;
+            --text-mid: #555555;
+            --text-light: #666666;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 28px rgba(30,100,40,0.12);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 18px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.8;
+            background: var(--bg-green);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ===== 阅读进度条 ===== */
+        .reading-progress {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: linear-gradient(90deg, var(--green-500), var(--green-300));
+            z-index: 200; border-radius: 0 2px 2px 0; transition: width 0.1s linear;
+        }
+
+        /* ===== 导航栏 ===== */
+        .navbar {
+            background: #ffffff;
+            background: rgba(255,255,255,0.85);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(46,125,50,0.08);
+            position: sticky; top: 0; z-index: 100; transition: box-shadow var(--transition);
+        }
+        .navbar.scrolled { box-shadow: 0 2px 20px rgba(46,125,50,0.10); }
+        .navbar .container { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+        .logo { font-size: 20px; font-weight: 700; color: var(--green-700); display: flex; align-items: center; gap: 10px; letter-spacing: 0.5px; }
+        .logo-icon {
+            width: 38px; height: 38px; background: linear-gradient(135deg, var(--green-500), var(--green-700));
+            border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff;
+        }
+        .nav-links { display: flex; list-style: none; gap: 4px; }
+        .nav-links a { display: block; padding: 8px 18px; border-radius: 20px; font-size: 14px; font-weight: 500; color: var(--text-mid); transition: all var(--transition); }
+        .nav-links a:hover, .nav-links a.active { background: var(--green-50); color: var(--green-700); font-weight: 600; }
+        .menu-toggle { display: none; background: none; border: none; font-size: 26px; cursor: pointer; color: var(--green-700); padding: 6px; width: 40px; height: 40px; border-radius: 10px; transition: background var(--transition); }
+        .menu-toggle:hover { background: var(--green-50); }
+
+        /* ===== Banner ===== */
+        .banner {
+            background: linear-gradient(160deg, #e8f5e9 0%, #c8e6c9 40%, #a5d6a7 100%);
+            padding: 90px 0 70px; text-align: center; position: relative; overflow: hidden;
+        }
+        .banner::before {
+            content: ''; position: absolute; top: -60px; right: -80px; width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%); border-radius: 50%; pointer-events: none;
+        }
+        .banner::after {
+            content: ''; position: absolute; bottom: -40px; left: -60px; width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%); border-radius: 50%; pointer-events: none;
+        }
+        .banner .container { position: relative; z-index: 1; }
+        .banner h1 { font-size: 42px; font-weight: 700; color: var(--green-900); margin-bottom: 16px; line-height: 1.3; letter-spacing: 1px; }
+        .banner p { font-size: 18px; color: var(--green-700); max-width: 620px; margin: 0 auto 36px; line-height: 1.7; opacity: 0.9; }
+        .scroll-hint { display: inline-block; margin-top: 16px; font-size: 28px; color: var(--green-500); animation: bounce 3s ease-in-out infinite; cursor: pointer; user-select: none; }
+        @keyframes bounce {
+            0%,20%,50%,80%,100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-4px); }
+        }
+        .banner-stats { display: flex; justify-content: center; gap: 56px; flex-wrap: wrap; margin-top: 8px; }
+        .stat-item { text-align: center; min-width: 120px; }
+        .stat-num { font-size: 36px; font-weight: 800; color: var(--green-900); line-height: 1.2; }
+        .stat-label { font-size: 13px; color: var(--green-500); margin-top: 4px; font-weight: 500; letter-spacing: 0.5px; }
+
+        /* ===== 通用板块标题 ===== */
+        section { padding: 80px 0; }
+        section:nth-child(even) { background: var(--bg-white); }
+        .section-title { text-align: center; font-size: 28px; font-weight: 700; color: var(--green-900); margin-bottom: 12px; letter-spacing: 0.5px; }
+        .section-sub { text-align: center; color: var(--text-light); margin-bottom: 48px; font-size: 16px; }
+
+        /* ===== 首页-快速入口 ===== */
+        .quick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+        .quick-card {
+            background: var(--bg-white); border: 1px solid rgba(67,160,71,0.12);
+            border-radius: var(--radius-lg); cursor: pointer; overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .quick-card { will-change: transform, box-shadow; }
+        .quick-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(67,160,71,0.25); }
+        .quick-card .card-header { padding: 36px 28px 24px; text-align: center; }
+        .quick-card .card-header .icon-circle {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--green-50), var(--green-100));
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 30px;
+        }
+        .quick-card .card-header h3 { font-size: 18px; font-weight: 600; color: var(--green-900); margin-bottom: 0; }
+        .quick-card .card-header p { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+        .quick-card .card-detail { display: none; }
+
+        /* ===== 可展开卡片通用样式 ===== */
+        .expandable-card {
+            background: var(--bg-white); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); cursor: pointer;
+            transition: box-shadow 0.3s ease, transform 0.25s ease;
+            position: relative; overflow: hidden;
+        }
+        .expandable-card { will-change: transform, box-shadow; }
+        .expandable-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .expandable-card .card-header {
+            padding: 28px 24px 20px; position: relative;
+        }
+        .expandable-card .card-hint {
+            text-align: center; padding: 0 24px 16px;
+            font-size: 12px; color: var(--green-300); font-weight: 500;
+            letter-spacing: 0.5px; user-select: none;
+            transition: color 0.2s;
+        }
+        .expandable-card:hover .card-hint { color: var(--green-500); }
+        .expandable-card .card-detail {
+            display: none;
+        }
+        .expandable-card .card-detail h4 {
+            font-size: 16px; color: var(--green-700); margin: 16px 0 8px;
+        }
+        .expandable-card .card-detail h4:first-child { margin-top: 0; }
+        .expandable-card .card-detail ul {
+            list-style: none; padding: 0; margin: 8px 0;
+        }
+        .expandable-card .card-detail ul li {
+            padding: 4px 0 4px 20px; position: relative;
+        }
+        .expandable-card .card-detail ul li::before {
+            content: "•"; color: var(--green-500); position: absolute; left: 4px;
+        }
+        .expandable-card .card-detail .highlight-box {
+            background: var(--green-50); border-radius: var(--radius-sm);
+            padding: 14px 18px; margin: 12px 0; font-size: 14px;
+            border-left: 3px solid var(--green-500);
+        }
+        .expandable-card .card-detail .warn-box {
+            background: var(--warn-bg); border-radius: var(--radius-sm);
+            padding: 14px 18px; margin: 12px 0; font-size: 14px;
+            border-left: 3px solid var(--warn-orange);
+        }
+        .expandable-card .card-detail .data-table {
+            width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px;
+        }
+        .expandable-card .card-detail .data-table th,
+        .expandable-card .card-detail .data-table td {
+            padding: 10px 14px; text-align: left; border-bottom: 1px solid #eee;
+        }
+        .expandable-card .card-detail .data-table th {
+            background: var(--green-50); color: var(--green-700); font-weight: 600; font-size: 13px;
+        }
+
+        /* ===== 控糖知识卡片 ===== */
+        .knowledge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
+        .knowledge-card { border-top: 4px solid var(--green-500); }
+        .knowledge-card .card-header .card-icon { font-size: 24px; margin-bottom: 10px; }
+        .knowledge-card .card-header h3 { font-size: 17px; font-weight: 600; color: var(--green-900); margin-bottom: 6px; line-height: 1.4; padding-right: 36px; }
+        .knowledge-card .card-header p { font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; }
+        .tag { display: inline-block; font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 20px; background: var(--green-50); color: var(--green-700); letter-spacing: 0.3px; }
+
+        /* ===== 饮食建议卡片 ===== */
+        .diet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+        .diet-item {
+            border-top: 8px solid transparent;
+            border-left: none;
+            overflow: hidden;
+        }
+        .diet-item.green-border  { border-top-color: var(--green-500); background: linear-gradient(180deg, rgba(67,160,71,0.04) 0%, #ffffff 25%); }
+        .diet-item.orange-border { border-top-color: var(--warn-orange); background: linear-gradient(180deg, rgba(245,124,0,0.04) 0%, #ffffff 25%); }
+        .diet-item.red-border    { border-top-color: #e53935; background: linear-gradient(180deg, rgba(229,57,53,0.04) 0%, #ffffff 25%); }
+        .diet-item .card-header { padding: 28px 28px 12px; }
+        .diet-item .card-header h3 { font-size: 18px; font-weight: 700; color: var(--green-900); padding-right: 36px; margin-bottom: 4px; }
+        .diet-item .card-detail { padding: 0 28px 28px; font-size: 14px; color: var(--text-mid); }
+        .diet-item .card-detail h4 { font-size: 15px; color: var(--green-700); margin: 18px 0 8px; }
+        .diet-item .card-detail h4:first-child { margin-top: 0; }
+        .diet-item .card-detail ul { list-style: none; padding: 0; margin: 8px 0; }
+        .diet-item .card-detail ul li { padding: 7px 0 7px 26px; position: relative; line-height: 1.6; }
+        .diet-item.green-border .card-detail ul li::before { content: "✓"; color: var(--green-500); position: absolute; left: 0; font-size: 12px; font-weight: 700; top: 8px; }
+        .diet-item.red-border .card-detail ul li::before { content: "✕"; color: #e53935; position: absolute; left: 0; font-size: 12px; font-weight: 700; top: 8px; }
+        .diet-item.orange-border .card-detail ul li::before { content: "●"; color: var(--warn-orange); position: absolute; left: 0; font-size: 8px; top: 10px; }
+        .diet-badge {
+            display: inline-block; font-size: 12px; font-weight: 600;
+            padding: 5px 16px; border-radius: 20px; color: #fff;
+            margin-bottom: 12px; letter-spacing: 0.5px;
+        }
+        .diet-badge.green  { background: var(--green-500); }
+        .diet-badge.orange { background: var(--warn-orange); }
+        .diet-badge.red    { background: #e53935; }
+        .diet-tip {
+            margin-top: 32px; padding: 22px 28px;
+            background: var(--green-50); border-radius: var(--radius-md);
+            font-size: 14px; color: var(--green-700);
+            border: 1px solid rgba(67,160,71,0.12);
+        }
+
+        /* ===== 运动指南卡片 ===== */
+        .exercise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
+        .exercise-card .card-header { text-align: center; padding: 32px 24px 24px; }
+        .exercise-card .card-header .icon-circle {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--green-50), var(--green-100));
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 28px;
+        }
+        .exercise-card .card-header h3 { font-size: 17px; font-weight: 600; color: var(--green-900); margin-bottom: 8px; padding-right: 0; }
+        .exercise-card .card-header p { font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-bottom: 14px; }
+        .exercise-card .duration { display: inline-block; font-size: 13px; font-weight: 500; color: var(--green-700); background: var(--green-50); padding: 6px 18px; border-radius: 20px; border: 1px solid rgba(67,160,71,0.1); }
+        .exercise-tip { margin-top: 28px; padding: 20px 24px; background: var(--warn-bg); border-radius: var(--radius-md); font-size: 14px; color: var(--warn-orange); border: 1px solid rgba(245,124,0,0.12); }
+
+        /* ===== FAQ 常见问答 ===== */
+        .faq-list { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .faq-card {
+            background: var(--bg-white); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease, transform 0.25s ease, border-color 0.3s ease;
+            overflow: hidden;
+        }
+        .faq-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: rgba(67,160,71,0.15); }
+        .faq-card .card-header {
+            padding: 22px 24px 4px;
+            display: flex; align-items: flex-start; gap: 14px;
+        }
+        .faq-card .card-header .faq-num {
+            flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+            background: var(--green-50); color: var(--green-700);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: 700;
+        }
+        .faq-card .card-header .faq-text { flex: 1; min-width: 0; }
+        .faq-card .card-header .faq-text h3 {
+            font-size: 16px; font-weight: 600; color: var(--green-900); line-height: 1.5;
+        }
+        .faq-card .card-detail { display: none; }
+
+        /* ===== 页脚 ===== */
+        .footer { background: var(--green-900); color: var(--green-100); text-align: center; padding: 40px 0; font-size: 14px; }
+        .footer a { color: var(--green-300); transition: color 0.2s; }
+        .footer a:hover { color: #fff; }
+        .footer-links { margin-bottom: 16px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; font-size: 13px; opacity: 0.8; }
+        .footer-divider { width: 40px; height: 2px; background: var(--green-500); margin: 16px auto; border-radius: 1px; opacity: 0.5; }
+
+        /* ===== 回到顶部按钮 ===== */
+        .back-to-top {
+            position: fixed; bottom: 32px; right: 28px; width: 48px; height: 48px;
+            background: var(--green-700); color: #fff; border: none; border-radius: 50%;
+            font-size: 22px; cursor: pointer; z-index: 150; opacity: 0; visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+            box-shadow: 0 4px 16px rgba(30,100,40,0.25);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .back-to-top:hover { background: var(--green-900); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(30,100,40,0.35); }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .navbar .container { height: 56px; }
+            .menu-toggle { display: flex; align-items: center; justify-content: center; }
+            .nav-links {
+                display: none; position: absolute; top: 56px; left: 0; right: 0;
+                background: #ffffff;
+                background: rgba(255,255,255,0.97);
+                -webkit-backdrop-filter: blur(12px);
+                backdrop-filter: blur(12px); flex-direction: column;
+                padding: 8px 20px 20px; box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+                gap: 2px; animation: slideDown 0.25s ease;
+            }
+            @keyframes slideDown {
+                from { opacity: 0; transform: translateY(-8px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+            .nav-links.show { display: flex; }
+            .nav-links a { padding: 14px 18px; font-size: 15px; border-radius: 12px; min-height: 44px; display: flex; align-items: center; }
+            .banner { padding: 56px 0 48px; }
+            .banner h1 { font-size: 28px; }
+            .banner p { font-size: 15px; padding: 0 12px; }
+            .banner-stats { gap: 28px; }
+            .stat-num { font-size: 28px; }
+            section { padding: 36px 0; }
+            .section-title { font-size: 22px; }
+            .section-sub { font-size: 14px; margin-bottom: 32px; }
+            .knowledge-grid, .diet-grid { grid-template-columns: 1fr; }
+            .exercise-grid, .quick-grid { grid-template-columns: 1fr 1fr; }
+            .back-to-top { bottom: 24px; right: 20px; width: 38px; height: 38px; font-size: 18px; }
+            .expandable-card .card-header { padding: 20px 18px 14px; }
+            .card-hint { font-size: 12px; padding: 0 16px 12px; }
+            .banner::before, .banner::after { display: none; }
+            .scroll-hint { animation: none; opacity: 0.6; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 14px; }
+            .banner { padding: 48px 0 40px; }
+            .banner h1 { font-size: 24px; }
+            .banner p { font-size: 14px; }
+            .banner-stats { gap: 18px; }
+            .stat-num { font-size: 24px; }
+            .stat-label { font-size: 11px; }
+            section { padding: 44px 0; }
+            .section-title { font-size: 18px; }
+            .section-sub { font-size: 13px; margin-bottom: 20px; }
+            .diet-grid { grid-template-columns: 1fr; }
+            .quick-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .shop-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .knowledge-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            /* 控糖服务三卡横向滑动 */
+            .pricing-grid {
+                display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 8px;
+            }
+            .pricing-card { flex: 0 0 260px; scroll-snap-align: start; }
+            .knowledge-card .card-header { padding: 12px 8px 8px; }
+            .knowledge-card .card-header .card-icon { font-size: 18px; margin-bottom: 4px; }
+            .knowledge-card .card-header h3 { font-size: 12px; font-weight: 700; line-height: 1.3; padding-right: 0; }
+            .knowledge-card .tag { font-size: 9px; padding: 2px 8px; }
+            .knowledge-card .card-hint { font-size: 10px; padding: 0 8px 8px; }
+            .exercise-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .exercise-card .card-header { padding: 14px 8px 10px; }
+            .exercise-card .icon-circle { width: 36px !important; height: 36px !important; font-size: 18px !important; }
+            .exercise-card .card-header h3 { font-size: 11px; }
+            .exercise-card .duration { font-size: 10px; padding: 3px 8px; }
+            .faq-list { gap: 12px; max-width: 100%; }
+            .course-modules { grid-template-columns: 1fr; }
+            .sample-day { padding: 20px; }
+            .buy-section { padding: 20px; }
+            .faq-card .card-header { padding: 14px 10px 2px; gap: 8px; }
+            .faq-card .card-header .faq-num { width: 28px; height: 28px; font-size: 12px; }
+            .faq-card .card-header .faq-text h3 { font-size: 13px; }
+            .faq-card .card-hint { font-size: 10px; padding: 0 8px 10px; }
+            .back-to-top { bottom: 24px; right: 16px; width: 36px; height: 36px; font-size: 18px; }
+            /* 卡片减小内边距 */
+            .expandable-card .card-header { padding: 18px 14px 12px; }
+            .quick-card .card-header { padding: 20px 14px 12px; }
+            .card-hint { font-size: 12px; padding: 0 18px 14px; }
+            /* 工具表单 */
+            .tool-form input, .tool-form select { font-size: 16px; padding: 10px 12px; }
+            .stats-bar { gap: 8px; }
+            .stats-bar .stat-chip { padding: 10px 6px; }
+            .stats-bar .stat-chip .val { font-size: 17px; }
+            .stats-bar .stat-chip .lbl { font-size: 10px; }
+            .result-box { padding: 14px 16px; font-size: 14px; }
+            .result-box .big-num { font-size: 30px; }
+        }
+        @media (max-width: 380px) {
+            .exercise-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+            .exercise-card .card-header { padding: 10px 6px 8px; }
+            .exercise-card .icon-circle { width: 30px !important; height: 30px !important; font-size: 16px !important; }
+            .exercise-card .card-header h3 { font-size: 10px; }
+            .exercise-card .duration { font-size: 9px; padding: 2px 6px; }
+            .exercise-card .card-hint { font-size: 9px; padding: 0 6px 8px; }
+            .knowledge-card .card-header { padding: 10px 6px 6px; }
+            .knowledge-card .card-header .card-icon { font-size: 16px; margin-bottom: 2px; }
+            .knowledge-card .card-header h3 { font-size: 11px; font-weight: 700; line-height: 1.3; padding-right: 0; }
+            .knowledge-card .tag { font-size: 8px; padding: 1px 6px; }
+            .knowledge-card .card-hint { font-size: 9px; padding: 0 6px 6px; }
+            .faq-card .card-header { padding: 12px 8px 2px; gap: 6px; }
+            .faq-card .card-header .faq-num { width: 24px; height: 24px; font-size: 11px; }
+            .faq-card .card-header .faq-text h3 { font-size: 12px; }
+            .faq-card .card-hint { font-size: 10px; padding: 0 6px 10px; }
+            .faq-list { gap: 6px; }
+            .banner-stats { gap: 12px; }
+            .stat-num { font-size: 22px; }
+        }
+
+        /* ===== 全屏内容弹窗 ===== */
+        .modal-overlay {
+            position: fixed; inset: 0; z-index: 999;
+            background: rgba(0,0,0,0.55);
+            display: flex; align-items: flex-start; justify-content: center;
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            overflow-y: auto; -webkit-overflow-scrolling: touch;
+            padding: 40px 20px;
+        }
+        .modal-overlay.active {
+            opacity: 1; visibility: visible;
+        }
+        .modal-panel { will-change: transform;
+            background: #fff; border-radius: var(--radius-lg);
+            width: 100%; max-width: 860px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+            transform: translateY(30px) scale(0.96);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+            margin: auto;
+        }
+        .modal-overlay.active .modal-panel { will-change: transform;
+            transform: translateY(0) scale(1);
+        }
+        .modal-header {
+            padding: 32px 36px 20px;
+            position: relative;
+            display: flex; align-items: flex-start; gap: 16px;
+        }
+        .modal-header .modal-icon {
+            font-size: 36px; flex-shrink: 0;
+            width: 56px; height: 56px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--green-50), var(--green-100));
+            display: flex; align-items: center; justify-content: center;
+        }
+        .modal-header .modal-title-area { flex: 1; min-width: 0; }
+        .modal-header .modal-title {
+            font-size: 22px; font-weight: 700; color: var(--green-900);
+            margin-bottom: 4px; padding-right: 40px; line-height: 1.3;
+        }
+        .modal-header .modal-tag {
+            display: inline-block; font-size: 12px; font-weight: 500;
+            padding: 4px 14px; border-radius: 20px;
+            background: var(--green-50); color: var(--green-700);
+        }
+        .modal-close {
+            position: absolute; top: 20px; right: 20px;
+            width: 40px; height: 40px; border-radius: 50%;
+            border: none; background: #f5f5f5;
+            font-size: 20px; color: #666; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s, color 0.2s;
+            z-index: 10;
+        }
+        .modal-close:hover { background: #e0e0e0; color: #333; }
+        .modal-body {
+            padding: 8px 36px 36px; font-size: 15px; color: var(--text-mid);
+            line-height: 1.9; max-height: 60vh; overflow-y: auto;
+        }
+        .modal-body h4 { font-size: 16px; color: var(--green-700); margin: 18px 0 8px; }
+        .modal-body h4:first-child { margin-top: 0; }
+        .modal-body ul { list-style: none; padding: 0; margin: 8px 0; }
+        .modal-body ul li { padding: 5px 0 5px 20px; position: relative; }
+        .modal-body ul li::before { content: "•"; color: var(--green-500); position: absolute; left: 4px; }
+        .modal-body .highlight-box {
+            background: var(--green-50); border-radius: var(--radius-sm);
+            padding: 14px 18px; margin: 14px 0; font-size: 14px;
+            border-left: 3px solid var(--green-500);
+        }
+        .modal-body .warn-box {
+            background: var(--warn-bg); border-radius: var(--radius-sm);
+            padding: 14px 18px; margin: 14px 0; font-size: 14px;
+            border-left: 3px solid var(--warn-orange);
+        }
+        .modal-body .data-table {
+            width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px;
+        }
+        .modal-body .data-table th,
+        .modal-body .data-table td {
+            padding: 10px 14px; text-align: left; border-bottom: 1px solid #eee;
+        }
+        .modal-body .data-table th {
+            background: var(--green-50); color: var(--green-700); font-weight: 600; font-size: 13px;
+        }
+        .modal-body .ref-note {
+            font-size: 12px; color: var(--text-light); margin-top: 18px;
+            padding-top: 12px; border-top: 1px solid #eee; font-style: italic;
+        }
+        /* 弹窗饮食列表符号 */
+        .modal-body ul.diet-green li::before { content: "✓"; color: var(--green-500); font-weight: 700; font-size: 12px; }
+        .modal-body ul.diet-orange li::before { content: "●"; color: var(--warn-orange); font-size: 8px; }
+        .modal-body ul.diet-red li::before { content: "✕"; color: #e53935; font-weight: 700; font-size: 12px; }
+
+        /* ===== 实用工具表单样式 ===== */
+        .tool-form { margin: 0; }
+        .tool-form .form-group { margin-bottom: 16px; }
+        .tool-form label {
+            display: block; font-size: 13px; font-weight: 600; color: var(--green-700);
+            margin-bottom: 6px;
+        }
+        .tool-form input, .tool-form select {
+            width: 100%; padding: 12px 14px; font-size: 15px;
+            border: 1.5px solid #e0e0e0; border-radius: var(--radius-sm);
+            background: #fafafa; transition: border-color 0.2s, box-shadow 0.2s;
+            font-family: inherit; color: var(--text-dark);
+        }
+        .tool-form input:focus, .tool-form select:focus {
+            outline: none; border-color: var(--green-500);
+            box-shadow: 0 0 0 3px rgba(67,160,71,0.10); background: #fff;
+        }
+        .tool-row { display: flex; gap: 12px; }
+        .tool-row .form-group { flex: 1; }
+        .btn {
+            display: inline-block; padding: 12px 28px; font-size: 15px; font-weight: 600;
+            border: none; border-radius: 25px; cursor: pointer; font-family: inherit;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn:active { transform: scale(0.97); }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .btn .spinner { display: none; width: 16px; height: 16px; border: 2px solid #fff; border-top-color: transparent; border-radius: 50%; animation: spin 0.6s linear infinite; vertical-align: middle; margin-right: 6px; }
+        .btn.loading .spinner { display: inline-block; }
+        .btn.loading .btn-text { display: none; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .btn-primary { background: var(--green-500); color: #fff; }
+        .btn-primary:hover { background: var(--green-700); }
+        .btn-sm {
+            padding: 6px 16px; font-size: 12px; border-radius: 16px;
+            font-weight: 500;
+        }
+        .btn-danger { background: #e53935; color: #fff; }
+        .btn-danger:hover { background: #c62828; }
+        .result-box {
+            margin-top: 18px; padding: 18px 20px; border-radius: var(--radius-md);
+            text-align: center; font-weight: 600; font-size: 16px;
+        }
+        .result-box.green  { background: #e8f5e9; color: #1b5e20; }
+        .result-box.orange { background: #fff3e0; color: #e65100; }
+        .result-box.red    { background: #ffebee; color: #b71c1c; }
+        .result-box .big-num { font-size: 36px; font-weight: 800; display: block; line-height: 1.2; }
+        .result-box .sub-text { font-size: 13px; font-weight: 400; margin-top: 4px; opacity: 0.8; }
+        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 14px; }
+        .glucose-table { width: 100%; min-width: 480px; border-collapse: collapse; font-size: 13px; }
+        .glucose-table th, .glucose-table td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: center; }
+        .glucose-table th { background: var(--green-50); color: var(--green-700); font-weight: 600; font-size: 12px; }
+        .glucose-table .high { color: #e53935; font-weight: 600; }
+        .glucose-table .low  { color: #1565c0; font-weight: 600; }
+        .gi-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 14px; }
+        .gi-table th, .gi-table td { padding: 8px 10px; border-bottom: 1px solid #eee; }
+        .gi-table th { background: var(--green-50); color: var(--green-700); font-weight: 600; font-size: 12px; cursor: pointer; }
+        .gi-table th:hover { background: var(--green-100); }
+        .gi-table tr.low-gi  { background: #f1f8e9; }
+        .gi-table tr.med-gi  { background: #fff8e1; }
+        .gi-table tr.high-gi { background: #ffebee; }
+        .gi-badge {
+            display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 12px;
+        }
+        .gi-badge.low  { background: #c8e6c9; color: #1b5e20; }
+        .gi-badge.med  { background: #ffecb3; color: #e65100; }
+        .gi-badge.high { background: #ffcdd2; color: #b71c1c; }
+        .stats-bar {
+            display: flex; gap: 14px; margin: 14px 0; flex-wrap: wrap;
+        }
+        .stats-bar .stat-chip {
+            flex: 1; min-width: 70px; text-align: center; padding: 14px 10px;
+            background: var(--green-50); border-radius: var(--radius-sm);
+        }
+        .stats-bar .stat-chip .val { font-size: 20px; font-weight: 700; color: var(--green-700); }
+        .stats-bar .stat-chip .lbl { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+        .empty-state { text-align: center; padding: 28px; color: var(--text-light); font-size: 14px; }
+
+        @media (max-width: 600px) {
+            .modal-overlay { padding: 16px 10px; align-items: flex-start; }
+            .modal-panel { will-change: transform; border-radius: var(--radius-md); }
+            .modal-header { padding: 24px 20px 16px; gap: 12px; }
+            .modal-header .modal-icon { width: 44px; height: 44px; font-size: 26px; }
+            .modal-header .modal-title { font-size: 18px; padding-right: 36px; }
+            .modal-body { padding: 4px 20px 24px; max-height: 65vh; font-size: 14px; }
+            .modal-close { top: 16px; right: 14px; width: 34px; height: 34px; font-size: 18px; }
+            .tool-row { flex-direction: column; gap: 0; }
+            .tool-row .form-group { margin-bottom: 12px; }
+        }
+
+        /* ===== 推荐好物 ===== */
+        @media (min-width: 481px) {
+        .shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 260px)); gap: 16px; justify-content: center; }
+        }
+        .product-card {
+            background: var(--bg-white); border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm); cursor: pointer; overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s ease, transform 0.25s ease;
+        }
+        .product-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .product-card .card-header { padding: 0; text-align: center; }
+        .product-card .product-cover {
+            height: 130px; background: #fafafa;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 50px; position: relative; overflow: hidden;
+        }
+        .product-card .product-cover .cover-label {
+            position: absolute; top: 6px; left: 6px;
+            font-size: 10px; font-weight: 600; color: #fff;
+            background: var(--green-500); padding: 2px 8px; border-radius: 8px;
+        }
+        .product-card .card-header .product-info {
+            padding: 10px 12px 0;
+        }
+        .product-card .card-header .product-info h3 {
+            font-size: 14px; font-weight: 600; color: var(--green-900); margin-bottom: 2px;
+        }
+        .product-card .card-header .product-info p {
+            font-size: 11px; color: var(--text-light); line-height: 1.4;
+        }
+        .product-card .card-hint { font-size: 11px; padding: 0 12px 10px; }
+        .product-card .card-detail { display: none; }
+        .btn-jd {
+            display: block; text-align: center; padding: 13px 20px; margin-top: 18px;
+            background: #e4393c; color: #fff; font-size: 15px; font-weight: 600;
+            border-radius: 25px; transition: background 0.2s, transform 0.15s;
+            text-decoration: none;
+        }
+        .btn-jd:hover { background: #c1272d; color: #fff; }
+        .affiliate-disclosure {
+            text-align: center; margin-top: 24px; font-size: 12px; color: var(--text-light);
+            padding: 10px; background: var(--green-50); border-radius: var(--radius-sm);
+        }
+
+        /* ===== 控糖服务 ===== */
+        .service-hero {
+            text-align: center; max-width: 700px; margin: 0 auto 40px;
+            font-size: 16px; color: var(--text-mid); line-height: 1.9;
+        }
+        .service-hero strong { color: var(--green-700); }
+        @media (min-width: 481px) {
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;
+            max-width: 850px; margin: 0 auto;
+        }
+        }
+        .pricing-card {
+            background: var(--bg-white); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); overflow: hidden;
+            border: 2px solid transparent; text-align: center;
+            transition: box-shadow 0.3s ease, transform 0.25s ease, border-color 0.3s ease;
+            display: flex; flex-direction: column;
+        }
+        .pricing-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+        .pricing-card.featured {
+            border-color: var(--green-500);
+            box-shadow: 0 4px 24px rgba(46,125,50,0.12);
+            position: relative;
+        }
+        .pricing-card.featured::before {
+            content: '👈 推荐'; position: absolute; top: 10px; right: -28px;
+            background: var(--green-500); color: #fff; font-size: 11px; font-weight: 600;
+            padding: 3px 30px; transform: rotate(45deg);
+        }
+        .pricing-card .tier-icon { font-size: 32px; margin: 20px 0 6px; }
+        .pricing-card .tier-name {
+            font-size: 16px; font-weight: 700; color: var(--green-900); margin-bottom: 2px;
+        }
+        .pricing-card .tier-desc {
+            font-size: 12px; color: var(--text-light); margin-bottom: 12px; padding: 0 16px;
+        }
+        .pricing-card .tier-price {
+            font-size: 28px; font-weight: 800; color: var(--green-700); margin-bottom: 2px;
+        }
+        .pricing-card .tier-price .unit { font-size: 14px; font-weight: 400; color: var(--text-light); }
+        .pricing-card .tier-price-note { font-size: 11px; color: var(--text-light); margin-bottom: 16px; }
+        .pricing-card .tier-features {
+            list-style: none; padding: 0 18px; margin: 0 0 18px; flex: 1; text-align: left;
+        }
+        .pricing-card .tier-features li {
+            padding: 4px 0 4px 18px; position: relative; font-size: 12px; color: var(--text-mid);
+            line-height: 1.5;
+        }
+        .pricing-card .tier-features li::before {
+            content: '✓'; color: var(--green-500); position: absolute; left: 0;
+            font-size: 10px; font-weight: 700; top: 5px;
+        }
+        .btn-tier {
+            display: block; margin: 0 18px 18px; padding: 11px 16px;
+            border-radius: 22px; font-size: 14px; font-weight: 600; text-align: center;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-tier-outline {
+            background: #fff; color: var(--green-700);
+            border: 2px solid var(--green-500);
+        }
+        .btn-tier-outline:hover { background: var(--green-50); }
+        .btn-tier-solid {
+            background: var(--green-500); color: #fff; border: none;
+        }
+        .btn-tier-solid:hover { background: var(--green-700); }
+        /* ===== 课程详情页 ===== */
+        .course-hero { text-align: center; max-width: 700px; margin: 0 auto 40px; }
+        .course-hero .course-badge {
+            display: inline-block; padding: 6px 18px; border-radius: 20px;
+            background: var(--green-50); color: var(--green-700);
+            font-size: 13px; font-weight: 600; margin-bottom: 16px;
+        }
+        .course-modules { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
+        .module-card {
+            background: var(--bg-white); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); overflow: hidden;
+            border-top: 4px solid var(--green-500);
+        }
+        .module-card:nth-child(2) { border-top-color: #ff9800; }
+        .module-card:nth-child(3) { border-top-color: #2196f3; }
+        .module-card .module-header { padding: 24px 24px 12px; }
+        .module-card .module-header h3 { font-size: 17px; font-weight: 700; color: var(--green-900); margin-bottom: 4px; }
+        .module-card .module-header .module-sub { font-size: 12px; color: var(--text-light); }
+        .module-card .module-body { padding: 0 24px 20px; }
+        .module-card .module-body ul { list-style: none; padding: 0; }
+        .module-card .module-body ul li { padding: 5px 0 5px 20px; position: relative; font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+        .module-card .module-body ul li::before { content: '•'; color: var(--green-500); position: absolute; left: 4px; }
+        .sample-day {
+            max-width: 700px; margin: 40px auto 0; padding: 28px;
+            background: var(--bg-white); border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm); border: 1px solid rgba(67,160,71,0.1);
+        }
+        .sample-day h4 { font-size: 16px; color: var(--green-700); margin-bottom: 16px; text-align: center; }
+        .meal-card {
+            padding: 14px 18px; margin-bottom: 10px; border-radius: var(--radius-sm);
+            background: var(--bg-green); border-left: 3px solid var(--green-500);
+        }
+        .meal-card .meal-time { font-size: 12px; font-weight: 700; color: var(--green-700); margin-bottom: 2px; }
+        .meal-card .meal-content { font-size: 14px; color: var(--text-mid); }
+        .course-includes {
+            max-width: 700px; margin: 40px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;
+        }
+        .course-includes .include-item {
+            display: flex; align-items: flex-start; gap: 10px; padding: 14px;
+            background: var(--bg-white); border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+        }
+        .course-includes .include-item .check-icon { color: var(--green-500); font-weight: 700; font-size: 14px; flex-shrink: 0; }
+        .course-includes .include-item .include-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+        .buy-section {
+            max-width: 500px; margin: 40px auto 0; text-align: center; padding: 28px;
+            background: var(--bg-white); border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md); border: 2px solid var(--green-500);
+        }
+        .buy-section .old-price { font-size: 18px; color: var(--text-light); text-decoration: line-through; margin-bottom: 4px; }
+        .buy-section .current-price { font-size: 42px; font-weight: 800; color: var(--green-700); margin-bottom: 4px; }
+        .buy-section .current-price .yuan { font-size: 20px; }
+        .buy-section .price-desc { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .buy-section .btn-buy {
+            display: block; padding: 14px 20px; background: var(--green-500);
+            color: #fff; font-size: 17px; font-weight: 700; border-radius: 28px;
+            transition: background 0.2s; margin-bottom: 8px;
+        }
+        .buy-section .btn-buy:hover { background: var(--green-700); color: #fff; }
+
+        html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+
+        /* ===== 商业内容区隔 ===== */
+        .commercial-divider {
+            max-width: 700px; margin: 0 auto; padding: 32px 20px; text-align: center;
+        }
+        .commercial-divider .divider-line {
+            height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent);
+            margin-bottom: 16px;
+        }
+        .commercial-divider .divider-text {
+            font-size: 13px; color: #999; letter-spacing: 1px;
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+        }
+        .commercial-divider .divider-text::before,
+        .commercial-divider .divider-text::after {
+            content: ''; display: inline-block; width: 40px; height: 1px; background: #ddd;
+        }
+        .commercial-badge {
+            display: inline-block; font-size: 11px; font-weight: 500;
+            padding: 3px 10px; border-radius: 12px;
+            background: #fff3e0; color: #e65100; border: 1px solid #ffe0b2;
+            margin-left: 8px; vertical-align: middle; letter-spacing: 0.5px;
+        }
+
+        /* ===== 隐私提示条 ===== */
+        .privacy-bar {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
+            background: rgba(27,94,32,0.97); color: #c8e6c9;
+            padding: 14px 20px; font-size: 13px;
+            display: flex; align-items: center; justify-content: center; gap: 16px;
+            flex-wrap: wrap; text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .privacy-bar.show { transform: translateY(0); }
+        .privacy-bar a { color: #a5d6a7; text-decoration: underline; }
+        .privacy-bar button {
+            padding: 8px 20px; border-radius: 20px; border: none;
+            background: #fff; color: #1b5e20; font-weight: 600; font-size: 13px;
+            cursor: pointer; white-space: nowrap;
+            transition: background 0.2s;
+        }
+        .privacy-bar button:hover { background: #e8f5e9; }
+
+        /* ===== 打印样式 ===== */
+        @media print {
+            /* 隐藏交互元素 */
+            .navbar, .reading-progress, .back-to-top, .privacy-bar,
+            .modal-overlay, .scroll-hint, .menu-toggle,
+            .card-hint, .commercial-divider, .commercial-badge,
+            .btn-jd, .btn-tier, .btn-tier-outline, .btn-tier-solid, .btn-buy,
+            .affiliate-disclosure, .product-card .cover-label {
+                display: none !important;
+            }
+
+            /* 隐藏商业板块 */
+            #shop, #services, #course, .pricing-card.featured::before {
+                display: none !important;
+            }
+
+            /* 显示所有卡片详情内容 */
+            .card-detail { display: block !important; }
+
+            /* 全局打印优化 */
+            body {
+                font-size: 13px; line-height: 1.7; color: #000; background: #fff;
+                font-family: "PingFang SC", "Microsoft YaHei", "SimSun", serif;
+            }
+            .container { max-width: 100%; padding: 0; }
+
+            /* 板块间距 */
+            section { padding: 32px 0; page-break-inside: avoid; }
+
+            /* 标题 */
+            .section-title { font-size: 22px; color: #000; }
+            .banner h1 { font-size: 26px; color: #000; }
+            .banner p { font-size: 14px; color: #333; }
+            .banner { background: #fff; padding: 40px 0 30px; text-align: center; }
+            .banner::before, .banner::after { display: none; }
+            .banner-stats { gap: 30px; }
+            .stat-num { font-size: 24px; color: #000; }
+            .stat-label { font-size: 11px; color: #555; }
+
+            /* 卡片 */
+            .expandable-card, .quick-card, .knowledge-card, .diet-item,
+            .exercise-card, .faq-card {
+                box-shadow: none !important; border: 1px solid #ddd !important;
+                break-inside: avoid; transform: none !important;
+                background: #fff !important;
+            }
+            .expandable-card:hover { transform: none; box-shadow: none; }
+            .quick-card:hover { transform: none; box-shadow: none; }
+
+            /* 表格 */
+            .data-table th { background: #eee; color: #000; }
+            .data-table th, .data-table td { border-bottom: 1px solid #ccc; }
+
+            /* 提示框 */
+            .highlight-box, .warn-box, .diet-tip, .exercise-tip {
+                background: #fff !important; border-left: 3px solid #999 !important;
+                color: #000 !important;
+            }
+            .highlight-box { border-left-color: #333 !important; }
+            .warn-box { border-left-color: #666 !important; }
+
+            /* 链接显示URL */
+            a[href]:after { content: " (" attr(href) ")"; font-size: 11px; color: #666; }
+            a[href^="#"]:after { content: ""; }
+            a[href^="javascript"]:after { content: ""; }
+
+            /* 分页控制 */
+            h2, h3 { page-break-after: avoid; }
+            .expandable-card { page-break-inside: avoid; }
+            .banner { page-break-after: avoid; }
+            .footer { page-break-before: auto; }
+
+            /* 饮食标注符号保留 */
+            .diet-item.green-border .card-detail ul li::before { color: #000; }
+            .diet-item.red-border .card-detail ul li::before { color: #000; }
+            .diet-item.orange-border .card-detail ul li::before { color: #000; }
+
+            /* 导航/页脚精简 */
+            .footer { background: #fff; color: #555; padding: 20px 0; border-top: 1px solid #ddd; }
+            .footer a { color: #555; }
+            .footer-divider { display: none; }
+            .footer-links { display: none; }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MedicalWebPage",
+        "headline": "控糖健康科普 — 科学控糖，健康生活",
+        "description": "提供糖尿病防治知识、饮食建议、运动指南、血糖管理工具",
+        "about": {
+            "@type": "MedicalCondition",
+            "name": "糖尿病",
+            "alternateName": "Diabetes Mellitus",
+            "associatedAnatomy": {
+                "@type": "AnatomicalStructure",
+                "name": "胰腺"
+            }
+        },
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "糖尿病患者可以吃水果吗？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "可以，但要选择低升糖指数的水果（如樱桃、柚子、草莓、苹果），控制在每天100-200克，最好在两餐之间食用。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "糖尿病会遗传吗？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "有遗传倾向。如果父母一方有2型糖尿病，子女患病风险增加约40%。但健康的生活方式可以显著降低发病风险。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "血糖控制好了能停药吗？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "不可自行停药！部分2型糖尿病患者通过严格的饮食和运动管理，在医生指导下可能减少药量，但需要长期监测血糖。"
+                }
+            }
+        ],
+        "audience": {
+            "@type": "MedicalAudience",
+            "audienceType": "糖尿病患者、糖尿病前期人群、高危人群及其家属"
+        },
+        "disclaimer": "本网站内容仅供参考，不构成医疗建议。如有健康问题，请咨询专业医生。"
+    }
+    </script>
+</head>
+<body>
+
+    <div class="reading-progress" id="progressBar"></div>
+
+    <!-- ==================== 导航栏 ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo"><span class="logo-icon">🍏</span><span>控糖健康科普</span></div>
+            <button class="menu-toggle" id="menuToggle" aria-label="菜单">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">首页</a></li>
+                <li><a href="#knowledge">控糖知识</a></li>
+                <li><a href="#diet">饮食建议</a></li>
+                <li><a href="#exercise">运动指南</a></li>
+                <li><a href="#faq">常见问答</a></li>
+                <li><a href="#shop">推荐好物</a></li>
+                <li><a href="#services">控糖服务</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==================== Banner ==================== -->
+    <section class="banner" id="home">
+        <div class="container">
+            <h1>科学控糖，健康生活</h1>
+            <p>了解糖尿病防治知识，掌握科学控糖方法，<br>让每一位读者都能成为自己健康的第一责任人。</p>
+            <div class="banner-stats">
+                <div class="stat-item"><div class="stat-num">4.22亿</div><div class="stat-label">全球糖尿病患者</div></div>
+                <div class="stat-item"><div class="stat-num">1.4亿+</div><div class="stat-label">中国糖尿病人数</div></div>
+                <div class="stat-item"><div class="stat-num">50%</div><div class="stat-label">早期可预防</div></div>
+            </div>
+            <div class="scroll-hint" onclick="document.getElementById('knowledge').scrollIntoView({behavior:'smooth'})">↓</div>
+        </div>
+    </section>
+
+    <!-- 快速入口 -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">快速了解</h2>
+            <p class="section-sub">从四个方面全面认识糖尿病</p>
+            <div class="quick-grid">
+
+                <!-- 卡片1：什么是糖尿病 -->
+                <div class="expandable-card quick-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="icon-circle">📖</div>
+                        <h3>什么是糖尿病？</h3>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>糖尿病的本质</h4>
+                        <p>糖尿病不是单一疾病，而是一组以慢性高血糖为共同特征的代谢综合征。其核心问题是<strong>胰岛素</strong>——一种由胰腺β细胞分泌的激素，负责将血液中的葡萄糖"运送"进细胞供能。当胰岛素分泌不足（1 型）或身体对胰岛素反应下降（2 型），葡萄糖就会堆积在血液中，形成高血糖。</p>
+                        <h4>诊断标准（满足任意一项即可诊断）</h4>
+                        <ul>
+                            <li><strong>空腹血糖 ≥ 7.0 mmol/L</strong>（至少禁食 8 小时）</li>
+                            <li><strong>口服葡萄糖耐量试验（OGTT）2 小时血糖 ≥ 11.1 mmol/L</strong></li>
+                            <li><strong>糖化血红蛋白（HbA1c）≥ 6.5%</strong></li>
+                            <li><strong>典型高血糖症状 + 随机血糖 ≥ 11.1 mmol/L</strong></li>
+                        </ul>
+                        <h4>分型概览</h4>
+                        <ul>
+                            <li><strong>1 型糖尿病（约 5–10%）：</strong>自身免疫破坏β细胞，胰岛素绝对缺乏，多见于儿童青少年，需终身胰岛素治疗。</li>
+                            <li><strong>2 型糖尿病（约 90–95%）：</strong>以胰岛素抵抗为核心，伴进行性β细胞功能减退，多见于中老年和超重人群。</li>
+                            <li><strong>妊娠期糖尿病：</strong>妊娠中晚期首次发现的高血糖，产后可能恢复正常，但未来糖尿病风险显著增高。</li>
+                            <li><strong>特殊类型糖尿病：</strong>由基因缺陷、胰腺疾病、药物等继发因素引起，较为罕见。</li>
+                        </ul>
+                        <div class="ref-note">📚 参考文献：中华医学会糖尿病学分会. 中国2型糖尿病防治指南（2024版）. 中华糖尿病杂志, 2025. | American Diabetes Association. Standards of Care in Diabetes—2025. Diabetes Care, 2025.</div>
+                    </div>
+                </div>
+
+                <!-- 卡片2：高危人群 -->
+                <div class="expandable-card quick-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="icon-circle">🔍</div>
+                        <h3>高危人群</h3>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>糖尿病风险因素分级</h4>
+                        <table class="data-table">
+                            <tr><th>风险等级</th><th>条件</th><th>建议</th></tr>
+                            <tr><td>高危</td><td>年龄 ≥40 岁 + 超重/肥胖（BMI ≥24）</td><td>每年筛查空腹血糖或 HbA1c</td></tr>
+                            <tr><td>高危</td><td>一级亲属（父母/兄弟姐妹）有糖尿病</td><td>每年筛查，同时关注生活方式</td></tr>
+                            <tr><td>高危</td><td>曾有妊娠期糖尿病或巨大儿（≥4kg）分娩史</td><td>产后每 1–3 年筛查，终身监测</td></tr>
+                            <tr><td>高危</td><td>高血压（≥140/90 mmHg）或血脂异常</td><td>每年筛查，控制血压血脂</td></tr>
+                            <tr><td>高危</td><td>既往诊断糖尿病前期</td><td>每 6–12 个月复查，积极干预</td></tr>
+                            <tr><td>中危</td><td>缺乏体力活动（每周运动 &lt;150 分钟）</td><td>增加运动量，2–3 年筛查一次</td></tr>
+                            <tr><td>中危</td><td>不健康饮食习惯（高糖高脂、低纤维）</td><td>调整饮食结构，定期体检</td></tr>
+                        </table>
+                        <h4>中国人群的特殊风险</h4>
+                        <ul>
+                            <li>中国成年人糖尿病患病率约 12.8%（2021 年 JAMA 发表数据），糖尿病前期患病率高达 35.2%，意味着近半数成年人血糖异常。</li>
+                            <li>中国人群在相同 BMI 下体脂率高于欧美人群，"瘦"不等于没风险——体重正常但腹型肥胖（腰围男 ≥90cm、女 ≥85cm）同样高危。</li>
+                            <li>中国是"亚洲糖尿病高发带"的核心区域，可能与遗传易感性（"节俭基因"假说）和快速城镇化过程中饮食/生活方式剧变有关。</li>
+                        </ul>
+                        <div class="ref-note">📚 参考文献：Li Y, et al. Prevalence of diabetes recorded in China using 2018 diagnostic criteria from the American Diabetes Association: national cross sectional study. BMJ, 2020. | Wang L, et al. Prevalence and Treatment of Diabetes in China, 2013-2018. JAMA, 2021.</div>
+                    </div>
+                </div>
+
+                <!-- 卡片3：常见症状 -->
+                <div class="expandable-card quick-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="icon-circle">⚠️</div>
+                        <h3>常见症状</h3>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>典型症状的发生机制</h4>
+                        <ul>
+                            <li><strong>多尿（每天尿量 >2.5L）</strong>——血糖过高时，肾脏拼命过滤排出多余葡萄糖，同时带走大量水分。葡萄糖在尿液中产生渗透性利尿作用。</li>
+                            <li><strong>多饮</strong>——大量排尿导致脱水，刺激下丘脑渴觉中枢，产生难以抑制的口渴感。</li>
+                            <li><strong>多食</strong>——胰岛素不足或抵抗使细胞"饥饿"（葡萄糖进不去），大脑误以为能量不足，持续发出进食信号。</li>
+                            <li><strong>体重减轻</strong>——细胞无法利用葡萄糖供能，身体转而分解脂肪和肌肉蛋白来获取能量，导致短期内体重快速下降。</li>
+                        </ul>
+                        <h4>容易被忽视的非典型症状</h4>
+                        <ul>
+                            <li><strong>视力模糊：</strong>高血糖改变晶状体渗透压，导致屈光度变化。血糖控制后可恢复，但长期高血糖会造成不可逆的视网膜损伤。</li>
+                            <li><strong>反复感染：</strong>高血糖环境利于细菌和真菌繁殖，常见尿路感染、皮肤感染、牙龈炎反复发作、女性阴道念珠菌感染。</li>
+                            <li><strong>伤口愈合缓慢：</strong>高血糖损伤微血管和免疫功能，小伤口长时间不愈合，尤其在足部需要高度警惕。</li>
+                            <li><strong>手脚麻木/刺痛：</strong>高血糖损伤周围神经，从脚趾开始对称性向上发展（"手套-袜子样"分布）。</li>
+                            <li><strong>皮肤表现：</strong>颈部、腋下出现天鹅绒样灰褐色斑块（黑棘皮症），是严重胰岛素抵抗的皮肤标志。</li>
+                        </ul>
+                        <div class="warn-box">
+                            <strong>⚠️ 重要警示：</strong>约 50% 的 2 型糖尿病患者在诊断时没有任何典型症状！不要等"三多一少"出现才去检查。有高危因素者应定期筛查血糖。
+                        </div>
+                        <div class="ref-note">📚 参考文献：American Diabetes Association. Classification and Diagnosis of Diabetes: Standards of Care in Diabetes—2025. Diabetes Care, 2025. | 中国2型糖尿病防治指南（2024版）.</div>
+                    </div>
+                </div>
+
+                <!-- 卡片4：控糖目标 -->
+                <div class="expandable-card quick-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="icon-circle">✅</div>
+                        <h3>控糖目标</h3>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>血糖控制目标（中国 2 型糖尿病指南 2024 版）</h4>
+                        <table class="data-table">
+                            <tr><th>指标</th><th>一般控制目标</th><th>严格控制目标</th><th>宽松目标</th></tr>
+                            <tr><td>空腹血糖（mmol/L）</td><td>4.4 – 7.0</td><td>4.4 – 6.1</td><td>7.0 – 10.0</td></tr>
+                            <tr><td>餐后 2 小时血糖（mmol/L）</td><td>&lt; 10.0</td><td>&lt; 7.8</td><td>&lt; 13.9</td></tr>
+                            <tr><td>HbA1c（%）</td><td>&lt; 7.0</td><td>&lt; 6.5</td><td>&lt; 8.0 – 8.5</td></tr>
+                            <tr><td>适用人群</td><td>大多数 2 型糖尿病患者</td><td>年轻、病程短、无并发症</td><td>高龄（≥75岁）、严重并发症</td></tr>
+                        </table>
+                        <h4>为什么目标要个体化？</h4>
+                        <ul>
+                            <li><strong>严格控制（HbA1c &lt; 6.5%）</strong>适合年轻、病程短、无心血管疾病者。UKPDS 研究显示早期严格控糖有"代谢记忆效应"——早控糖受益持续数十年。</li>
+                            <li><strong>一般控制（HbA1c &lt; 7.0%）</strong>适合大多数患者。多项大型研究（ADVANCE、VADT）证实这是平衡获益与风险的最佳目标。</li>
+                            <li><strong>宽松控制（HbA1c 7.5–8.5%）</strong>适合预期寿命有限、反复严重低血糖、晚期并发症者。此时严格控糖的获益不再明显，反而增加低血糖风险。</li>
+                        </ul>
+                        <h4>其他综合控制目标</h4>
+                        <ul>
+                            <li><strong>血压 &lt; 130/80 mmHg</strong>（合并蛋白尿者 &lt; 125/75 mmHg）</li>
+                            <li><strong>LDL-C &lt; 2.6 mmol/L</strong>（合并心血管病者 &lt; 1.8 mmol/L）</li>
+                            <li><strong>BMI &lt; 24 kg/m²</strong>，腰围男 &lt; 90cm、女 &lt; 85cm</li>
+                            <li><strong>葡萄糖目标范围内时间（TIR）> 70%</strong>（使用 CGM 者）</li>
+                        </ul>
+                        <div class="ref-note">📚 参考文献：中华医学会糖尿病学分会. 中国2型糖尿病防治指南（2024版）. | ADA. Glycemic Targets: Standards of Care in Diabetes—2025. Diabetes Care, 2025. | UKPDS Group. Intensive blood-glucose control with sulphonylureas or insulin compared with conventional treatment and risk of complications. Lancet, 1998.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 控糖知识 ==================== -->
+    <section id="knowledge">
+        <div class="container">
+            <h2 class="section-title">控糖知识</h2>
+            <p class="section-sub">点击卡片展开详细内容，用科学知识武装自己</p>
+            <div class="knowledge-grid">
+
+                <!-- 卡片1 -->
+                <div class="expandable-card knowledge-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔬</div>
+                        <h3>1 型和 2 型糖尿病的区别</h3>
+                        <span class="tag">基础知识</span>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>一图看懂区别</h4>
+                        <table class="data-table">
+                            <tr><th>对比维度</th><th>1 型糖尿病</th><th>2 型糖尿病</th></tr>
+                            <tr><td>占比</td><td>约 5–10%</td><td>约 90–95%</td></tr>
+                            <tr><td>发病年龄</td><td>多见于儿童、青少年</td><td>多见于 40 岁以上中老年</td></tr>
+                            <tr><td>体型</td><td>多偏瘦</td><td>多超重或肥胖</td></tr>
+                            <tr><td>病因</td><td>自身免疫破坏胰岛β细胞</td><td>胰岛素抵抗 + 相对分泌不足</td></tr>
+                            <tr><td>胰岛素水平</td><td>绝对缺乏</td><td>正常、偏高或偏低</td></tr>
+                            <tr><td>治疗</td><td>必须依赖胰岛素注射</td><td>生活方式干预 → 口服药 → 可能需要胰岛素</td></tr>
+                            <tr><td>酮症酸中毒风险</td><td>高</td><td>较低，但应激时可发生</td></tr>
+                        </table>
+                        <div class="highlight-box">
+                            <strong>关键认知：</strong>2 型糖尿病早期可以通过生活方式干预控制甚至逆转，而 1 型糖尿病需要终身胰岛素治疗。两种类型都需要规范管理，不可自行停药。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 卡片2 -->
+                <div class="expandable-card knowledge-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <h3>血糖监测的频率</h3>
+                        <span class="tag">自我管理</span>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>不同情况下的监测方案</h4>
+                        <table class="data-table">
+                            <tr><th>患者类型</th><th>监测频率</th><th>监测时间点</th></tr>
+                            <tr><td>血糖控制平稳</td><td>每周 2–4 次</td><td>空腹 + 餐后2小时（轮换）</td></tr>
+                            <tr><td>新诊断或调整药物</td><td>每天 4–7 次</td><td>空腹 + 三餐后2小时 + 睡前</td></tr>
+                            <tr><td>使用胰岛素（强化方案）</td><td>每天 4 次以上</td><td>空腹 + 三餐前 + 三餐后2小时 + 睡前</td></tr>
+                            <tr><td>妊娠期糖尿病</td><td>每天 4–7 次</td><td>空腹 + 三餐后1小时或2小时 + 睡前</td></tr>
+                        </table>
+                        <h4>动态血糖仪（CGM）</h4>
+                        <p>CGM 通过皮下传感器每 1–5 分钟自动测量一次组织间液葡萄糖，可连续佩戴 7–14 天。它能提供"葡萄糖目标范围内时间（TIR）"这一重要指标，帮助发现无症状的高低血糖。TIR（3.9–10.0 mmol/L）建议控制目标为 >70%。</p>
+                        <div class="highlight-box">
+                            <strong>血糖记录建议：</strong>不光记录数值，还要备注当天的饮食、运动、情绪和用药情况，这样才能找出影响血糖的真正因素。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 卡片3 -->
+                <div class="expandable-card knowledge-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🩸</div>
+                        <h3>糖化血红蛋白（HbA1c）</h3>
+                        <span class="tag">检查指标</span>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>HbA1c 与平均血糖的对应关系</h4>
+                        <table class="data-table">
+                            <tr><th>HbA1c（%）</th><th>估算平均血糖（mmol/L）</th><th>评价</th></tr>
+                            <tr><td>5.0</td><td>约 5.4</td><td>正常</td></tr>
+                            <tr><td>6.0</td><td>约 7.0</td><td>糖尿病前期</td></tr>
+                            <tr><td>6.5</td><td>约 7.8</td><td>糖尿病诊断阈值</td></tr>
+                            <tr><td>7.0</td><td>约 8.6</td><td>一般控制目标</td></tr>
+                            <tr><td>8.0</td><td>约 10.2</td><td>需加强管理</td></tr>
+                            <tr><td>9.0</td><td>约 11.8</td><td>控制不佳</td></tr>
+                        </table>
+                        <h4>影响 HbA1c 准确性的因素</h4>
+                        <ul>
+                            <li>贫血、血红蛋白病（如地中海贫血）可使结果不准确</li>
+                            <li>近期大量失血或输血会改变红细胞寿命</li>
+                            <li>肾功能不全患者 HbA1c 可能低估真实血糖水平</li>
+                            <li>妊娠期 HbA1c 变化较快，不能完全替代血糖监测</li>
+                        </ul>
+                        <div class="warn-box">
+                            <strong>注意：</strong>HbA1c 反映的是"平均值"，无法显示血糖波动。两个 HbA1c 都是 7% 的人，一个可能血糖平稳，另一个可能频繁高低交替。结合 CGM 的 TIR 指标更全面。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 卡片4 -->
+                <div class="expandable-card knowledge-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">⚠️</div>
+                        <h3>糖尿病的并发症</h3>
+                        <span class="tag">风险警示</span>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>急性并发症（需立即就医）</h4>
+                        <ul>
+                            <li><strong>糖尿病酮症酸中毒：</strong>血糖极高（常 >16.7 mmol/L），恶心呕吐、呼吸深快、呼气有烂苹果味、意识模糊。1 型更常见。</li>
+                            <li><strong>高渗性高血糖状态：</strong>血糖极高（常 >33.3 mmol/L），严重脱水、意识障碍。多见于 2 型老年患者。</li>
+                            <li><strong>严重低血糖：</strong>血糖 <2.8 mmol/L，意识丧失、抽搐，需立即注射胰高血糖素或静脉推注葡萄糖。</li>
+                        </ul>
+                        <h4>慢性并发症</h4>
+                        <table class="data-table">
+                            <tr><th>类型</th><th>具体表现</th><th>筛查建议</th></tr>
+                            <tr><td>大血管病变</td><td>冠心病、心肌梗死、脑卒中、下肢动脉闭塞</td><td>每年评估心血管风险因素</td></tr>
+                            <tr><td>微血管-眼</td><td>糖尿病视网膜病变，可致盲</td><td>每年一次眼底检查</td></tr>
+                            <tr><td>微血管-肾</td><td>糖尿病肾病，可进展至尿毒症</td><td>每 3–6 个月查尿微量白蛋白</td></tr>
+                            <tr><td>神经病变</td><td>手脚麻木、刺痛、感觉减退</td><td>每年一次神经筛查+足部检查</td></tr>
+                            <tr><td>糖尿病足</td><td>足部溃疡、感染、坏疽，严重需截肢</td><td>每天自查双脚，每年专业检查</td></tr>
+                        </table>
+                        <div class="highlight-box">
+                            <strong>关键数据：</strong>英国前瞻性糖尿病研究（UKPDS）证实，HbA1c 每降低 1%，微血管并发症风险降低 37%，心肌梗死风险降低 14%。控糖是有明确收益的。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 卡片5 -->
+                <div class="expandable-card knowledge-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔍</div>
+                        <h3>胰岛素抵抗</h3>
+                        <span class="tag">病理机制</span>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>胰岛素抵抗是怎么发生的？</h4>
+                        <p>胰岛素就像一把"钥匙"，细胞上的胰岛素受体是"锁"。胰岛素抵抗相当于"锁生锈了"——钥匙插进去但门打不开，葡萄糖无法进入细胞。胰腺被迫分泌更多胰岛素（高胰岛素血症）来补偿，长期超负荷工作导致β细胞功能逐渐衰竭。</p>
+                        <h4>改善胰岛素抵抗的六大策略</h4>
+                        <ul>
+                            <li><strong>减重：</strong>减重 5–10% 可显著改善胰岛素敏感性。内脏脂肪（腹部脂肪）是胰岛素抵抗的重要来源。</li>
+                            <li><strong>有氧运动：</strong>每次 30 分钟以上的中等强度运动，运动后肌肉对葡萄糖的摄取能力可持续增强 24–48 小时。</li>
+                            <li><strong>抗阻训练：</strong>增加肌肉量是提高基础代谢和葡萄糖摄取能力的最有效手段。</li>
+                            <li><strong>低升糖指数饮食：</strong>全谷物、蔬菜、豆类代替精制碳水。</li>
+                            <li><strong>充足睡眠：</strong>睡眠不足（<6 小时/天）可使胰岛素敏感性下降 20–30%。</li>
+                            <li><strong>减压：</strong>慢性压力升高皮质醇，加重胰岛素抵抗。</li>
+                        </ul>
+                        <div class="highlight-box">
+                            <strong>好消息：</strong>胰岛素抵抗是可逆的。研究显示，通过 3–6 个月的生活方式干预，相当一部分糖尿病前期患者的胰岛素敏感性可恢复正常。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 卡片6 -->
+                <div class="expandable-card knowledge-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🛡️</div>
+                        <h3>糖尿病前期</h3>
+                        <span class="tag">早期干预</span>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>诊断标准</h4>
+                        <table class="data-table">
+                            <tr><th>指标</th><th>正常</th><th>糖尿病前期</th><th>糖尿病</th></tr>
+                            <tr><td>空腹血糖（mmol/L）</td><td>&lt; 6.1</td><td>6.1 – 7.0</td><td>≥ 7.0</td></tr>
+                            <tr><td>餐后2小时血糖（mmol/L）</td><td>&lt; 7.8</td><td>7.8 – 11.1</td><td>≥ 11.1</td></tr>
+                            <tr><td>HbA1c（%）</td><td>&lt; 5.7</td><td>5.7 – 6.4</td><td>≥ 6.5</td></tr>
+                        </table>
+                        <h4>糖尿病前期如何逆转？</h4>
+                        <ul>
+                            <li><strong>中国大庆研究</strong>（随访 30 年）证明：生活方式干预可使糖尿病发生风险降低 39%，心血管死亡风险降低 33%。</li>
+                            <li><strong>减重是关键：</strong>超重者减重 7–10%，糖尿病发生风险可降低 58%（美国 DPP 研究）。</li>
+                            <li><strong>每周 ≥150 分钟中等强度运动：</strong>快走、骑车、游泳均可。</li>
+                            <li><strong>饮食结构优化：</strong>减少精制碳水，增加膳食纤维，控制总热量。</li>
+                            <li><strong>定期筛查：</strong>每 6–12 个月检测空腹血糖或 HbA1c。</li>
+                        </ul>
+                        <div class="warn-box">
+                            <strong>提醒：</strong>糖尿病前期通常没有任何症状，很多人已处于这个阶段却不知道。如果你有高危因素（家族史、超重、40岁以上），建议每年至少查一次血糖。
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 饮食建议 ==================== -->
+    <section id="diet">
+        <div class="container">
+            <h2 class="section-title">饮食建议</h2>
+            <p class="section-sub">点击卡片查看详细饮食指南，吃对食物，血糖更平稳</p>
+            <div class="diet-grid">
+
+                <!-- 推荐食用 -->
+                <div class="expandable-card diet-item green-border" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <span class="diet-badge green">推荐食用</span>
+                        <h3>🌱 高膳食纤维食物</h3>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>推荐食物清单</h4>
+                        <ul>
+                            <li>全谷物：燕麦、糙米、藜麦、全麦面包</li>
+                            <li>深色绿叶蔬菜：菠菜、油菜、西兰花</li>
+                            <li>豆类：绿豆、扁豆、鹰嘴豆</li>
+                            <li>坚果：杏仁、核桃（适量）</li>
+                            <li>低糖水果：莓类、柚子、苹果</li>
+                        </ul>
+                        <h4>为什么推荐这些食物？</h4>
+                        <ul>
+                            <li><strong>全谷物</strong>含有完整谷粒结构，消化吸收慢，餐后血糖升高平缓。糙米的升糖指数（GI）约 50–55，远低于白米饭的 73–89。</li>
+                            <li><strong>深色绿叶蔬菜</strong>热量极低（每 100g 菠菜仅约 23 千卡），富含镁、铬等改善胰岛素敏感性的矿物质。</li>
+                            <li><strong>豆类</strong>含有丰富的可溶性膳食纤维和植物蛋白，可延缓胃排空，降低餐后血糖峰值。研究显示每天摄入 50g 豆类可使 HbA1c 降低约 0.3%。</li>
+                            <li><strong>坚果</strong>富含健康单不饱和脂肪酸和膳食纤维，每天 20–30g（约一小把）可降低心血管疾病风险。但热量高，需控制量。</li>
+                            <li><strong>低 GI 水果</strong>如草莓（GI≈40）、柚子（GI≈25）、苹果（GI≈36），适量食用不引起血糖急剧波动。</li>
+                        </ul>
+                        <div class="highlight-box">
+                            <strong>实操建议：</strong>每餐蔬菜占餐盘一半，全谷物主食占四分之一，优质蛋白占四分之一。"先吃蔬菜→再吃蛋白质→最后吃主食"的进食顺序可显著延缓餐后血糖升高。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 适量食用 -->
+                <div class="expandable-card diet-item orange-border" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <span class="diet-badge orange">适量食用</span>
+                        <h3>🥦 优质蛋白与健康脂肪</h3>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>适量食物清单</h4>
+                        <ul>
+                            <li>鱼类（尤其是深海鱼：三文鱼、沙丁鱼）</li>
+                            <li>去皮禽肉、鸡蛋</li>
+                            <li>豆腐、豆浆等豆制品</li>
+                            <li>橄榄油、山茶油等植物油</li>
+                            <li>低脂或脱脂奶制品</li>
+                        </ul>
+                        <h4>蛋白质怎么吃？</h4>
+                        <ul>
+                            <li><strong>鱼类</strong>（每周 2–3 次）：深海鱼富含 ω-3 多不饱和脂肪酸（EPA/DHA），有助于降低甘油三酯和炎症水平。一项荟萃分析显示每周吃鱼 2 次可使心血管死亡风险降低 17%。</li>
+                            <li><strong>禽肉和鸡蛋</strong>：去皮禽肉饱和脂肪含量远低于红肉。鸡蛋每天 1 个对血糖影响极小，蛋黄中的卵磷脂有益肝脏健康。</li>
+                            <li><strong>豆制品</strong>：大豆蛋白可部分替代动物蛋白，豆腐、豆浆、毛豆都是优质选择。大豆异黄酮还有抗氧化作用。</li>
+                        </ul>
+                        <h4>脂肪怎么选？</h4>
+                        <ul>
+                            <li><strong>单不饱和脂肪酸</strong>（橄榄油、山茶油、牛油果）：有助于改善血脂谱，提高胰岛素敏感性。</li>
+                            <li><strong>限制饱和脂肪</strong>（肥肉、黄油、椰子油）：每天饱和脂肪供能比应 <7%。</li>
+                            <li><strong>杜绝反式脂肪</strong>（人造黄油、油炸食品、部分糕点）：反式脂肪增加胰岛素抵抗和心血管风险。</li>
+                        </ul>
+                        <div class="highlight-box">
+                            <strong>蛋白质推荐量：</strong>糖尿病患者每天蛋白质摄入约 1.0–1.5g/kg 体重（如 60kg 者每日 60–90g）。合并肾病者需在医生指导下限制蛋白摄入。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 限制/避免 -->
+                <div class="expandable-card diet-item red-border" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <span class="diet-badge red">限制/避免</span>
+                        <h3>⚠️ 高糖高脂食物</h3>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>限制/避免食物清单</h4>
+                        <ul>
+                            <li>含糖饮料：可乐、果汁、奶茶</li>
+                            <li>精制碳水：白面包、白米饭（建议部分替换为粗粮）</li>
+                            <li>高糖零食：蛋糕、饼干、糖果</li>
+                            <li>油炸食品、动物内脏</li>
+                            <li>过咸的食物和加工肉制品</li>
+                        </ul>
+                        <h4>这些食物的危害</h4>
+                        <ul>
+                            <li><strong>含糖饮料：</strong>一罐 330mL 可乐含糖约 35g（相当于 7 块方糖），液态糖吸收极快，会在数分钟内迅速升高血糖。每天喝一罐含糖饮料，糖尿病风险增加 26%。</li>
+                            <li><strong>精制碳水：</strong>去除了麸皮和胚芽，膳食纤维几乎为零，消化吸收快，升糖迅猛。将白米饭部分替换为糙米、杂豆，可使餐后血糖峰值降低 20–30%。</li>
+                            <li><strong>高糖零食：</strong>蛋糕、饼干通常同时含有大量糖和饱和脂肪（"糖油混合物"），这种组合会延长高血糖状态并促进脂肪堆积。</li>
+                            <li><strong>油炸食品：</strong>高温油炸产生晚期糖基化终末产物（AGEs），加重氧化应激和炎症反应，加速糖尿病并发症进展。</li>
+                            <li><strong>加工肉制品：</strong>火腿、培根、香肠含大量钠和亚硝酸盐。高钠摄入增加高血压和肾病风险——糖尿病患者已有双重风险。</li>
+                        </ul>
+                        <div class="warn-box">
+                            <strong>不是永远不能吃，而是要知道代价：</strong>偶尔聚餐吃一次无妨，但不能成为日常。关键是建立"这些是特殊场合食品，不是日常食物"的意识。
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="diet-tip">
+                <strong>💡 饮食小贴士：</strong> 建议少食多餐，每餐七八分饱；先吃蔬菜再吃主食，有助于延缓餐后血糖上升；每天饮水量保持在 1.5–2 升。
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 运动指南 ==================== -->
+    <section id="exercise">
+        <div class="container">
+            <h2 class="section-title">运动指南</h2>
+            <p class="section-sub">点击卡片查看运动详情，合理运动是控糖的天然良药</p>
+            <div class="exercise-grid">
+
+                <!-- 快走 -->
+                <div class="expandable-card exercise-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="icon-circle">🏃</div>
+                        <h3>快走或慢跑</h3>
+                        <span class="duration">每次 30–40 分钟</span>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>为什么快走是最推荐的起步运动？</h4>
+                        <ul>
+                            <li>零门槛：不需要特殊器材，一双舒适的运动鞋即可。</li>
+                            <li>低受伤风险：相比跑步，快走对膝关节的冲击力小约 50%。</li>
+                            <li>效果确切：每天快走 30 分钟，每周 5 天，可使 2 型糖尿病风险降低约 30%。</li>
+                        </ul>
+                        <h4>如何判断强度？</h4>
+                        <ul>
+                            <li><strong>"谈话测试"：</strong>快走时能说话但不能唱歌，就是合适的中等强度。</li>
+                            <li><strong>目标心率</strong> ≈ 170 − 年龄（如 50 岁：约 120 次/分）。</li>
+                            <li><strong>主观感觉</strong>：身体微热、微微出汗、呼吸加深但不喘。</li>
+                        </ul>
+                        <h4>进阶建议</h4>
+                        <p>适应后可尝试"间歇快走"：快走 3 分钟 + 慢走 1 分钟交替，共 30 分钟。间歇训练对提高胰岛素敏感性效果更好。</p>
+                    </div>
+                </div>
+
+                <!-- 骑车 -->
+                <div class="expandable-card exercise-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="icon-circle">🚴</div>
+                        <h3>骑自行车</h3>
+                        <span class="duration">每次 30–45 分钟</span>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>适合人群</h4>
+                        <ul>
+                            <li><strong>超重/肥胖者</strong>：体重由车座支撑，膝关节承受压力远小于跑步和快走。</li>
+                            <li><strong>膝关节不适者</strong>：骑车是非负重运动，对关节友好。</li>
+                            <li><strong>中老年人群</strong>：可选用室内固定自行车，安全可控。</li>
+                        </ul>
+                        <h4>骑行强度参考</h4>
+                        <ul>
+                            <li>平地慢骑（约 15km/h）：中等强度，适合日常锻炼。</li>
+                            <li>速度加快或上坡：中高强度，每周 1–2 次即可。</li>
+                            <li>室内功率自行车：可精确控制功率输出，适合进阶训练。</li>
+                        </ul>
+                        <div class="warn-box">
+                            <strong>安全提示：</strong>户外骑行务必佩戴头盔；选择平坦、车少的路段；随身携带血糖仪和快速升糖食品；避免在血糖过高（>16.7 mmol/L）或过低（<5.6 mmol/L）时运动。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 太极拳 -->
+                <div class="expandable-card exercise-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="icon-circle">🧘</div>
+                        <h3>太极拳</h3>
+                        <span class="duration">每次 30–60 分钟</span>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>科学证据</h4>
+                        <ul>
+                            <li>一项纳入 14 项随机对照试验的荟萃分析显示，规律练习太极拳可使空腹血糖平均下降 0.5–1.0 mmol/L，HbA1c 下降 0.3–0.5%。</li>
+                            <li>太极拳结合了有氧运动、柔韧性训练和平衡训练，对改善糖尿病神经病变患者的平衡能力有额外帮助。</li>
+                        </ul>
+                        <h4>推荐练习方式</h4>
+                        <ul>
+                            <li><strong>频率：</strong>每周 3–5 次，每次 30–60 分钟。</li>
+                            <li><strong>流派：</strong>24 式简化太极拳最适合初学者入门；杨式太极拳动作舒展柔和，适合中老年。</li>
+                            <li><strong>学习渠道：</strong>社区太极拳班、公园晨练群、在线教学视频。</li>
+                        </ul>
+                        <div class="highlight-box">
+                            <strong>额外益处：</strong>太极拳的冥想和呼吸成分有助于降低压力激素（皮质醇）水平，间接改善血糖控制。同时改善睡眠质量，这对血糖管理至关重要。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 抗阻训练 -->
+                <div class="expandable-card exercise-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="icon-circle">🏋️</div>
+                        <h3>抗阻训练</h3>
+                        <span class="duration">每周 2–3 次</span>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>为什么糖尿病患者必须做力量训练？</h4>
+                        <p>肌肉是人体最大的"葡萄糖仓库"——约 80% 的餐后葡萄糖由骨骼肌摄取。肌肉量越多，处理血糖的能力越强。40 岁以后肌肉以每年 1–2% 的速度流失（肌少症），抗阻训练是维持和增加肌肉的唯一有效手段。</p>
+                        <h4>入门训练方案</h4>
+                        <ul>
+                            <li><strong>深蹲</strong>（下肢）：12–15 次 × 2–3 组，可扶着椅子做。</li>
+                            <li><strong>俯卧撑</strong>（上肢）：可从跪姿或墙推开始，8–12 次 × 2–3 组。</li>
+                            <li><strong>弹力带划船</strong>（背部）：12–15 次 × 2–3 组。</li>
+                            <li><strong>臀桥</strong>（核心+臀部）：15–20 次 × 2–3 组。</li>
+                            <li>组间休息 60–90 秒；每周 2–3 次，两次训练之间至少隔 48 小时。</li>
+                        </ul>
+                        <div class="warn-box">
+                            <strong>安全第一：</strong>有视网膜病变者避免用力屏气（Valsalva 动作）；有神经病变者使用器械比自由重量更安全；从低重量高次数开始，动作标准比重量更重要。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 游泳 -->
+                <div class="expandable-card exercise-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="icon-circle">🧖</div>
+                        <h3>游泳</h3>
+                        <span class="duration">每次 30–45 分钟</span>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>游泳的独特优势</h4>
+                        <ul>
+                            <li><strong>零关节冲击</strong>：水的浮力支撑全身重量，对膝关节、髋关节和脊柱零压力。严重肥胖或骨关节炎患者也能安全锻炼。</li>
+                            <li><strong>全身参与</strong>：游泳同时调动上肢、下肢和核心肌群，热量消耗大（中等速度蛙泳约消耗 350–450 千卡/小时）。</li>
+                            <li><strong>心血管获益</strong>：水中运动对心血管系统有独特的训练效应，水的压力有助于静脉回流。</li>
+                        </ul>
+                        <h4>游泳前后注意事项</h4>
+                        <ul>
+                            <li>游泳前测血糖：如 <5.6 mmol/L，先补充 15g 碳水化合物。</li>
+                            <li>不要独自游泳：低血糖在水中极其危险，必须有同伴在场。</li>
+                            <li>游泳后测血糖：水中运动可能持续消耗血糖，注意运动后迟发性低血糖。</li>
+                            <li>糖尿病足患者需穿防水鞋，避免赤脚在泳池边行走，防止脚部受伤。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 居家健身 -->
+                <div class="expandable-card exercise-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="icon-circle">🏠</div>
+                        <h3>居家健身操</h3>
+                        <span class="duration">每次 20–30 分钟</span>
+                    </div>
+                    <div class="card-hint">了解更多 →</div>
+                    <div class="card-detail">
+                        <h4>推荐居家运动项目</h4>
+                        <ul>
+                            <li><strong>原地踏步/高抬腿</strong>（10–15 分钟）：可边看电视边做，无器械，易坚持。</li>
+                            <li><strong>座椅健身操</strong>：适合年龄大或行动不便者，坐在椅子上完成手臂上举、腿伸展、躯干扭转等动作。</li>
+                            <li><strong>瑜伽（温和风格）</strong>：哈他瑜伽、阴瑜伽可改善柔韧性、减轻压力。避免高温瑜伽（脱水风险）。</li>
+                            <li><strong>跳绳</strong>（适合体能较好者）：燃脂效率极高，5 分钟跳绳 ≈ 15 分钟慢跑的热量消耗。但体重过大者避免（关节压力大）。</li>
+                        </ul>
+                        <h4>如何坚持？</h4>
+                        <ul>
+                            <li>设定固定时间（如每天晚饭后 1 小时），形成习惯锚。</li>
+                            <li>每天只需要 20 分钟——降低心理门槛比追求时长更重要。</li>
+                            <li>准备一个运动垫和弹力带，放在显眼位置，环境提示能有效促进行动。</li>
+                            <li>找一个运动伙伴或加入线上运动打卡群，社会支持是坚持的关键。</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="exercise-tip">
+                <strong>⚠️ 运动提醒：</strong> 运动前请咨询医生；避免空腹运动以防低血糖；随身携带糖果或饼干；运动前后注意监测血糖；循序渐进，量力而行。
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 常见问答 ==================== -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">常见问答</h2>
+            <p class="section-sub">你关心的问题，这里都有答案</p>
+            <div class="faq-list">
+
+                <div class="expandable-card faq-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="faq-num">1</div>
+                        <div class="faq-text"><h3>糖尿病患者可以吃水果吗？</h3></div>
+                    </div>
+                    <div class="card-hint">点击查看答案 →</div>
+                    <div class="card-detail">
+                        <p>可以，但要选择低升糖指数的水果（如樱桃、柚子、草莓、苹果），控制在每天 100–200 克，最好在两餐之间食用，避免饭后立即吃。同时相应减少主食摄入量。</p>
+                        <h4>常见水果 GI 值速查</h4>
+                        <table class="data-table">
+                            <tr><th>水果</th><th>GI 值</th><th>每次建议量</th></tr>
+                            <tr><td>樱桃</td><td>22（低）</td><td>约 150g（一小碗）</td></tr>
+                            <tr><td>柚子</td><td>25（低）</td><td>约 200g（2–3瓣）</td></tr>
+                            <tr><td>苹果</td><td>36（低）</td><td>约 150g（1个中等大小）</td></tr>
+                            <tr><td>草莓</td><td>40（低）</td><td>约 150g（8–10颗）</td></tr>
+                            <tr><td>香蕉</td><td>52（中）</td><td>约 100g（1小根）</td></tr>
+                            <tr><td>西瓜</td><td>72（高）</td><td>尽量少吃或不吃</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="expandable-card faq-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="faq-num">2</div>
+                        <div class="faq-text"><h3>糖尿病会遗传吗？</h3></div>
+                    </div>
+                    <div class="card-hint">点击查看答案 →</div>
+                    <div class="card-detail">
+                        <p>有遗传倾向。如果父母一方有 2 型糖尿病，子女患病风险增加约 40%；双方都有则风险更高。但遗传并非决定因素，健康的生活方式可以显著降低发病风险。</p>
+                        <h4>遗传 vs 生活方式的相对贡献</h4>
+                        <p>大规模双胞胎研究显示：2 型糖尿病的遗传度约为 30–70%，但即使有高风险基因，保持健康体重、规律运动和合理饮食可将实际发病风险降低 50% 以上。换句话说：<strong>基因给枪上了膛，但扣动扳机的是生活方式。</strong></p>
+                    </div>
+                </div>
+
+                <div class="expandable-card faq-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="faq-num">3</div>
+                        <div class="faq-text"><h3>血糖控制好了能停药吗？</h3></div>
+                    </div>
+                    <div class="card-hint">点击查看答案 →</div>
+                    <div class="card-detail">
+                        <p>不可自行停药！部分 2 型糖尿病患者通过严格的饮食和运动管理，在医生指导下可能减少药量，但需要长期监测血糖。擅自停药可能导致血糖急剧升高，引发危险。</p>
+                        <h4>什么是"糖尿病缓解"？</h4>
+                        <p>2021 年国际共识将"糖尿病缓解"定义为：停药 ≥3 个月后 HbA1c <6.5%。缓解不等于治愈——一旦恢复之前的不良生活方式，血糖会再次升高。实现缓解的主要途径是显著减重（通常需减 >10–15kg），且越早干预成功率越高（病程 <5 年者效果最好）。</p>
+                    </div>
+                </div>
+
+                <div class="expandable-card faq-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="faq-num">4</div>
+                        <div class="faq-text"><h3>糖尿病患者能喝酒吗？</h3></div>
+                    </div>
+                    <div class="card-hint">点击查看答案 →</div>
+                    <div class="card-detail">
+                        <p>不建议饮酒。酒精可引起血糖波动，大量饮酒尤其危险——既可能诱发低血糖（特别是空腹饮酒），又可能因摄入过多热量导致血糖升高。如确实需要饮酒，应严格限量并监测血糖。</p>
+                        <h4>如果必须饮酒的参考限量</h4>
+                        <ul>
+                            <li>女性 ≤1 个酒精单位/天，男性 ≤2 个酒精单位/天</li>
+                            <li>1 个酒精单位 ≈ 啤酒 330mL ≈ 红酒 150mL ≈ 白酒 30mL</li>
+                            <li>绝对不能空腹饮酒，饮酒前必须吃主食</li>
+                            <li>饮酒前后监测血糖，尤其睡前，防止夜间低血糖</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="expandable-card faq-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="faq-num">5</div>
+                        <div class="faq-text"><h3>什么是低血糖？如何处理？</h3></div>
+                    </div>
+                    <div class="card-hint">点击查看答案 →</div>
+                    <div class="card-detail">
+                        <p>低血糖指血糖 &lt; 3.9 mmol/L，表现为心慌、手抖、出冷汗、头晕、乏力。出现症状时应立即补充 15 克快速升糖食物，如 3–4 块方糖、半杯果汁或 150 mL 含糖饮料。15 分钟后复测血糖，如仍低则再补充一次。</p>
+                        <h4>"15-15 原则"详解</h4>
+                        <p><strong>第 1 步：</strong>摄入 15g 快速升糖碳水化合物（选其一）：</p>
+                        <ul>
+                            <li>3–4 块方糖</li>
+                            <li>150mL 含糖果汁或可乐（非无糖）</li>
+                            <li>一勺蜂蜜或白糖溶于温水</li>
+                        </ul>
+                        <p><strong>第 2 步：</strong>等待 15 分钟，复测血糖。如仍 &lt;3.9 mmol/L，再次摄入 15g 碳水化合物，再等 15 分钟复测。</p>
+                        <p><strong>第 3 步：</strong>血糖恢复后，如果距下一餐 >1 小时，吃一份含复合碳水和蛋白质的零食（如半片全麦面包+花生酱），防止血糖再次下降。</p>
+                        <div class="warn-box">
+                            <strong>严重低血糖（意识不清）：</strong>不要喂食或喂水（有窒息风险），立即拨打 120，如家中有胰高血糖素注射液立即注射。将患者侧卧，等待急救。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable-card faq-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="faq-num">6</div>
+                        <div class="faq-text"><h3>无糖食品可以随便吃吗？</h3></div>
+                    </div>
+                    <div class="card-hint">点击查看答案 →</div>
+                    <div class="card-detail">
+                        <p>不可以。无糖食品虽不含蔗糖，但可能含有淀粉、麦芽糊精等碳水化合物，同样会升高血糖。此外无糖饼干、糕点中的油脂含量也较高，热量不容忽视。建议查看营养成分表中的碳水化合物含量。</p>
+                        <h4>看懂"无糖"标签</h4>
+                        <ul>
+                            <li><strong>"无糖"</strong> = 每 100g 含糖量 ≤0.5g，但可能含淀粉、面粉等升糖成分</li>
+                            <li><strong>"无添加糖"</strong> = 没有额外加糖，但食物本身的碳水化合物仍然会升糖</li>
+                            <li><strong>糖醇（木糖醇、麦芽糖醇等）</strong>升糖幅度比蔗糖低，但大量食用可能引起腹泻，且仍有热量</li>
+                            <li>关键看<strong>"总碳水化合物"</strong>含量，而不是"糖"含量</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 商业内容分隔线 ==================== -->
+    <div class="commercial-divider">
+        <div class="divider-line"></div>
+        <div class="divider-text">以下为商业合作内容</div>
+    </div>
+
+    <!-- ==================== 推荐好物 ==================== -->
+    <section id="shop">
+        <div class="container">
+            <h2 class="section-title">🛒 推荐好物<span class="commercial-badge">商业合作</span></h2>
+            <p class="section-sub">编辑精选控糖好物，点击下方按钮前往京东查看详情</p>
+
+            <div style="max-width:800px;margin:0 auto 32px;padding:20px 24px;background:var(--bg-white);border-radius:var(--radius-md);border:1px solid rgba(67,160,71,0.1);font-size:14px;color:var(--text-mid);line-height:1.9;">
+                <p style="margin-bottom:10px;">🔍 <strong>我们为什么推荐这些好物？</strong></p>
+                <p>控糖是一条漫长的路，选对工具和食物能让这条路好走很多。但市面上产品太多、广告太杂，普通人根本分不清哪些是真有用、哪些是智商税。</p>
+                <p>我们推荐的产品都经过<strong>真实糖友试用验证</strong>——要么是我们自己长期在用的、要么是糖友群里口碑一致好评的。不推荐贵的、只推荐对的。每件产品我们都标注了京东参考价和真实使用体验，买不买你自己判断。通过本站链接购买我们会获得少量佣金（不影响你的价格），这也是支撑网站持续运营的方式。感谢信任！🙏</p>
+            </div>
+
+            <div class="shop-grid">
+
+                <!-- 产品1：三诺优准血糖仪 -->
+                <div class="expandable-card product-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="product-cover" style="padding:12px;background:#fff;">
+                            <span class="cover-label">🔥 编辑推荐</span>
+                            <img src="https://img10.360buyimg.com/pcpubliccms/s450x450_jfs/t20280617/453925/23/13974/186325/6a3387dbF85b2933b/0a023203206a9bc5.jpg.avif" alt="三诺优准血糖仪" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" style="width:100%;height:100%;object-fit:contain;">
+                            <span style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;background:#e8f5e9;">🩸</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>三诺优准血糖仪</h3>
+                            <p>医用级脱氢酶技术 · 5秒出结果 · 语音播报</p>
+                        </div>
+                    </div>
+                    <div class="card-hint">查看详情 →</div>
+                    <div class="card-detail">
+                        <h4>三诺优准血糖仪｜用后分享</h4>
+                        <p>很多糖友一开始都和我一样，觉得血糖仪随便买个便宜的就行，能测就够了。可真正控糖后才发现：<strong>不准的数值，比不测更可怕。</strong>数据忽高忽低，吃饭不敢吃、运动不敢动，每天活得小心翼翼，控糖完全靠瞎猜。</p>
+                        <p>后来咬牙换成了三诺优准，虽然比基础款贵一点点，但真心觉得<strong>换得太值了</strong>！它最大的不一样就是够准、够稳、不折腾人。采用医用级抗干扰试纸，吃饭、吃药后测量也不会偏差离谱，和医院复查数值基本对得上，终于不用再为数据焦虑。</p>
+                        <p>特别贴心的是<strong>微量采血几乎无痛</strong>，老人完全不抗拒，大屏彩色显示+语音播报，眼神不好也能听得清清楚楚，5秒快速出结果，日常监测特别省心。</p>
+                        <p>很多人担心贵，其实<strong>恰恰相反</strong>！机器一次性投入稍高，但试纸单价极低、长期耗材超省钱。不用频繁跑医院、不用因为数据不准白遭罪，看似多花一点，实则为长期控糖省钱、省心、安心，长期控糖的朋友一定要试试！</p>
+                        <a href="https://u.jd.com/VGpsFt7" target="_blank" rel="nofollow" class="btn-jd">🛒 前往京东查看详情</a>
+                    </div>
+                </div>
+
+                <!-- 产品2：西麦即食燕麦片 -->
+                <div class="expandable-card product-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="product-cover" style="background:linear-gradient(160deg,#fff8e1,#ffecb3);">
+                            <span class="cover-label" style="background:#ef6c00;">🥣 控糖早餐</span>
+                            <span style="font-size:56px;">🌾</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>西麦即食燕麦片 1000g</h3>
+                            <p>纯燕麦无添加蔗糖 · 高膳食纤维 · 控糖早餐</p>
+                        </div>
+                    </div>
+                    <div class="card-hint">查看详情 →</div>
+                    <div class="card-detail">
+                        <h4>西麦即食燕麦片｜用后分享</h4>
+                        <p>确诊糖尿病后，早餐成了最头疼的事。白粥升糖快、油条不健康、不吃又饿得慌。后来在营养科医生的建议下开始吃燕麦，<strong>真后悔没早点换</strong>——饱腹感强、血糖稳、做起来还方便。</p>
+                        <p>试过好几个牌子，最后锁定了西麦这款。配料表<strong>只有燕麦，没有额外添加蔗糖</strong>，吃着放心。每100g含膳食纤维12g，是大米的5倍，β-葡聚糖让燕麦煮出来粘稠拉丝——这种粘稠感正是降血脂、稳血糖的关键成分。</p>
+                        <p><strong>吃法超简单：</strong>早上三勺燕麦加热水或牛奶泡3分钟就行，赶时间也能吃上健康早餐。我习惯加几颗坚果和半个苹果切块，营养均衡又控糖。一大袋1000g能吃将近一个月，<strong>折下来每天早餐成本不到5毛钱</strong>。</p>
+                        <p>很多糖友觉得健康食品贵，但西麦这款日常价才十几块一袋，活动时更是不到10块。<strong>比白粥馒头便宜，比油条包子健康</strong>，关键是真的帮我把空腹血糖稳住了。控糖早餐选它，不会后悔。</p>
+                        <a href="https://u.jd.com/VGTdjTZ" target="_blank" rel="nofollow" class="btn-jd">🛒 前往京东查看详情</a>
+                    </div>
+                </div>
+
+                <!-- 产品3：麦酥园猴头菇饼干 -->
+                <div class="expandable-card product-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="product-cover" style="background:linear-gradient(160deg,#fff3e0,#ffe0b2);">
+                            <span class="cover-label" style="background:#795548;">🍪 控糖零食</span>
+                            <span style="font-size:56px;">🍪</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>麦酥园猴头菇饼干</h3>
+                            <p>无糖精 · 粗粮酥性 · 养胃代餐零食</p>
+                        </div>
+                    </div>
+                    <div class="card-hint">查看详情 →</div>
+                    <div class="card-detail">
+                        <h4>麦酥园猴头菇饼干｜用后分享</h4>
+                        <p>控糖之后最难受的就是<strong>没零食吃</strong>。饿了只能忍着，看到别人吃饼干馋得不行。后来发现了这款猴头菇饼干，<strong>无添加糖精、粗粮烘焙</strong>，终于能放心解馋了。</p>
+                        <p>口感特别酥脆，一咬就碎，麦香里带一股猴头菇的清香。猴头菇本身养胃，<strong>非油炸烤出来的</strong>，比普通饼干健康太多。饿了来两三片配一杯牛奶，饱腹感强又不升糖，下午茶时间不再难熬。</p>
+                        <p><strong>大份量超实惠：</strong>一箱3斤（1500g）才二十几块，够吃一个月。京东好评率96%，买过的人都说"香酥可口、不甜腻、养胃舒服"。办公室放一箱、家里放一箱，控糖也能享受零食的快乐。</p>
+                        <a href="https://u.jd.com/VrTbmPn" target="_blank" rel="nofollow" class="btn-jd">🛒 前往京东查看详情</a>
+                    </div>
+                </div>
+
+                <!-- 产品4：BD胰岛素针头 -->
+                <div class="expandable-card product-card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="product-cover" style="background:linear-gradient(160deg,#e3f2fd,#bbdefb);">
+                            <span class="cover-label" style="background:#1565c0;">💉 打针必备</span>
+                            <span style="font-size:56px;">💉</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>新优锐 BD胰岛素针头</h3>
+                            <p>5切面超薄 · 几乎无痛 · 京东好评99%</p>
+                        </div>
+                    </div>
+                    <div class="card-hint">查看详情 →</div>
+                    <div class="card-detail">
+                        <h4>新优锐 BD胰岛素针头｜用后分享</h4>
+                        <p>打胰岛素最怕的就是疼。刚开始用医院给的针头，每次扎针都要做半天心理建设，肚皮上青一块紫一块。后来换成了BD新优锐，<strong>真心觉得选对针头太重要了</strong>。</p>
+                        <p>BD是国际大品牌，这款升级了<strong>五切面技术</strong>，比三切面针头锋利太多，扎进去几乎没感觉。4mm超短针头配合32G超细针径，<strong>疼痛感降到最低</strong>，打完肚皮上基本不留痕迹。京东自营好评率99%、五十多万条评价，用过的都说好。</p>
+                        <p>一根针头就一两块钱，但换来的舒适感和安全性完全值得。<strong>记住：针头必须一次一换</strong>，重复使用会变钝、增加疼痛和感染风险。推荐4mm/32G规格——针最短最细，打胰岛素不再是一件痛苦的事。</p>
+                        <a href="https://u.jd.com/V1Ta1cU" target="_blank" rel="nofollow" class="btn-jd">🛒 前往京东查看详情</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="affiliate-disclosure">
+                💡 说明：以上链接为京东联盟推广链接。通过本站链接购买，我们会获得少量佣金（不影响你的购买价格），感谢支持！
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 控糖服务 ==================== -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">🎯 控糖服务<span class="commercial-badge">商业合作</span></h2>
+            <p class="section-sub">从免费科普到深度指导，找到适合你的控糖方式</p>
+
+            <div class="service-hero">
+                <p>血糖忽高忽低？每顿饭都纠结能不能吃？运动做了血糖也不降？<strong>你不是一个人。</strong>我们提供从免费工具到1对1深度指导的三层服务，<strong>帮你从控糖小白变成自己的健康管家。</strong></p>
+            </div>
+
+            <div class="pricing-grid">
+
+                <!-- 免费层（可点击展开工具） -->
+                <div class="pricing-card expandable-card" onclick="openFreeTools(this)" style="cursor:pointer;">
+                    <div class="tier-icon">🌱</div>
+                    <div class="tier-name">免费自助</div>
+                    <div class="tier-desc">自己学、自己练，网站工具随便用</div>
+                    <div class="tier-price">¥0<span class="unit"> /永久</span></div>
+                    <div class="tier-price-note">完全免费 · 点击打开工具</div>
+                    <ul class="tier-features">
+                        <li>全站糖尿病科普知识库</li>
+                        <li>BMI计算器 · 食物GI查询</li>
+                        <li>血糖记录器（本地保存）</li>
+                        <li>7天控糖饮食打卡</li>
+                        <li>小红书每日控糖小贴士</li>
+                    </ul>
+                    <div class="card-hint" style="font-size:12px;padding:0 18px 16px;">点击卡片打开免费工具 →</div>
+                    <div class="card-detail" style="display:none;"></div>
+                </div>
+
+                <!-- 课程层（推荐） -->
+                <div class="pricing-card featured">
+                    <div class="tier-icon">📚</div>
+                    <div class="tier-name">控糖饮食课程</div>
+                    <div class="tier-desc">系统学习，一次购买永久可看</div>
+                    <div class="tier-price">¥99<span class="unit"> /永久</span></div>
+                    <div class="tier-price-note">🎉 首发优惠仅需 ¥69</div>
+                    <ul class="tier-features">
+                        <li>21天控糖饮食完整方案</li>
+                        <li>早中晚餐+加餐食谱安排</li>
+                        <li>食物GI值分类速查表</li>
+                        <li>外出就餐点菜攻略</li>
+                        <li>常见饮食误区逐一拆解</li>
+                        <li>含7天饮食打卡指导</li>
+                    </ul>
+                    <a href="javascript:void(0)" onclick="openCourseModal()" class="btn-tier btn-tier-solid">查看课程详情</a>
+                </div>
+
+                <!-- 1对1层 -->
+                <div class="pricing-card">
+                    <div class="tier-icon">💎</div>
+                    <div class="tier-name">1对1深度指导</div>
+                    <div class="tier-desc">私人定制，我陪你一起控糖</div>
+                    <div class="tier-price">¥399<span class="unit"> /月</span></div>
+                    <div class="tier-price-note">单次咨询 ¥199/30分钟</div>
+                    <ul class="tier-features">
+                        <li>首次1小时深度评估 + 定制方案</li>
+                        <li>每周1次1对1视频/电话指导</li>
+                        <li>日常微信不限次答疑</li>
+                        <li>个人化饮食 + 运动方案调整</li>
+                        <li>血糖数据分析 + 趋势判断</li>
+                        <li>紧急情况及时响应指导</li>
+                    </ul>
+                    <a href="javascript:void(0)" onclick="openConsultModal()" class="btn-tier btn-tier-solid">预约免费初谈</a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== 课程详情 ==================== -->
+    <!-- ==================== 页脚 ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <span>参考：中国2型糖尿病防治指南（2024版）</span>
+                <span>WHO 糖尿病实况报道</span>
+                <span>中华医学会糖尿病学分会</span>
+                <span>ADA 糖尿病诊疗标准</span>
+            </div>
+            <div class="footer-divider"></div>
+            <p>本网站内容仅供参考，不构成医疗建议。如有健康问题，请咨询专业医生。</p>
+            <p style="margin-top:6px;"><a href="diet/" style="color:#81c784;">📚 21天控糖饮食计划课程</a></p>
+            <p style="margin-top:8px;font-size:12px;opacity:0.7;line-height:1.8;">
+                🔒 <strong>隐私保护：</strong>本网站不收集任何个人信息，不使用第三方Cookie。血糖记录器等工具的数据仅保存在您的浏览器本地（localStorage），不会上传至任何服务器。您可以随时清除浏览器数据来删除所有记录。
+            </p>
+            <p style="margin-top:8px;">&copy; 2026 控糖健康科普 &middot; 科学控糖，健康生活 &middot; <a href="#home">回到顶部</a></p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
+
+    <!-- 隐私提示条 -->
+    <div class="privacy-bar" id="privacyBar">
+        <span>🔒 本网站不收集个人信息，工具数据仅保存在您的浏览器本地。使用即表示您已知晓。</span>
+        <button onclick="dismissPrivacyBar()">知道了</button>
+    </div>
+
+    <!-- ==================== 全屏内容弹窗 ==================== -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-panel">
+            <button class="modal-close" id="modalClose" aria-label="关闭">✕</button>
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon"></div>
+                <div class="modal-title-area">
+                    <div class="modal-title" id="modalTitle"></div>
+                    <span class="modal-tag" id="modalTag"></span>
+                </div>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- ==================== JavaScript ==================== -->
+    <script>
+        (function () {
+            // ========== 移动端菜单 ==========
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            menuToggle.addEventListener('click', function () {
+                navLinks.classList.toggle('show');
+            });
+            navLinks.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    navLinks.classList.remove('show');
+                });
+            });
+
+            // ========== 全屏弹窗 ==========
+            var modalOverlay = document.getElementById('modalOverlay');
+            var modalIcon = document.getElementById('modalIcon');
+            var modalTitle = document.getElementById('modalTitle');
+            var modalTag = document.getElementById('modalTag');
+            var modalBody = document.getElementById('modalBody');
+            var modalClose = document.getElementById('modalClose');
+
+            function openModal(card) {
+                // 提取图标
+                var icon = card.querySelector('.card-icon') || card.querySelector('.icon-circle');
+                var iconHTML = icon ? icon.innerHTML : (icon ? icon.textContent : '');
+                var iconEl = card.querySelector('.card-icon') || card.querySelector('.icon-circle');
+                // 图标：保留 emoji 内容
+                modalIcon.textContent = iconEl ? iconEl.textContent.trim() : '';
+
+                // 提取标题
+                var title = card.querySelector('h3');
+                modalTitle.textContent = title ? title.textContent.trim() : '';
+
+                // 提取标签
+                var tag = card.querySelector('.tag') || card.querySelector('.diet-badge');
+                if (tag) {
+                    modalTag.textContent = tag.textContent.trim();
+                    modalTag.style.display = 'inline-block';
+                } else {
+                    modalTag.style.display = 'none';
+                }
+
+                // 提取详情内容
+                var detail = card.querySelector('.card-detail');
+                if (detail) {
+                    modalBody.innerHTML = detail.innerHTML;
+                }
+
+                // 为饮食列表标记特殊类
+                if (card.classList.contains('green-border')) {
+                    var uls = modalBody.querySelectorAll('ul');
+                    uls.forEach(function(ul) { ul.className = 'diet-green'; });
+                } else if (card.classList.contains('orange-border')) {
+                    var uls = modalBody.querySelectorAll('ul');
+                    uls.forEach(function(ul) { ul.className = 'diet-orange'; });
+                } else if (card.classList.contains('red-border')) {
+                    var uls = modalBody.querySelectorAll('ul');
+                    uls.forEach(function(ul) { ul.className = 'diet-red'; });
+                }
+
+                // 显示弹窗
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                modalOverlay.scrollTop = 0;
+            }
+
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            window.closeModal = closeModal;
+
+            // ========== 购买弹窗 ==========
+            // ========== 1对1咨询弹窗 ==========
+            window.openConsultModal = function () {
+                modalIcon.textContent = '💎';
+                modalTitle.textContent = '1对1深度指导 · 免费初谈';
+                modalTag.style.display = 'none';
+                modalBody.innerHTML =
+                    '<div style="text-align:center;margin-bottom:20px;">' +
+                    '<p style="font-size:14px;color:var(--text-mid);line-height:1.9;margin-bottom:16px;">每月 <strong style="color:var(--green-700);">¥399</strong>，包含每周1次1对1指导 + 日常微信答疑 + 个性化方案调整。</p>' +
+                    '<p style="font-size:13px;color:var(--text-light);margin-bottom:20px;">第一步：先免费初谈，互相了解一下你的情况和需求，我们再决定是否合作。</p>' +
+                    '<div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;">' +
+                    '<div style="text-align:center;max-width:220px;">' +
+                    '<p style="font-size:13px;font-weight:700;color:var(--green-700);margin-bottom:8px;">📱 扫码加微信</p>' +
+                    '<img src="f424a51d24728882c8d2cebce3e6bb1f.jpg" alt="微信二维码" style="width:200px;height:200px;border-radius:12px;border:2px solid #eee;object-fit:contain;">' +
+                    '<p style="font-size:11px;color:var(--text-light);margin-top:6px;">备注"1对1咨询"</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div style="background:#f9fef9;border-radius:10px;padding:14px 18px;font-size:13px;color:var(--text-mid);line-height:1.9;text-align:center;margin-top:16px;">' +
+                    '<strong>📋 流程：</strong> ① 扫码加微信 → ② 约时间免费初谈（15-20分钟）→ ③ 互相觉得合适 → ④ 付费开始1对1指导' +
+                    '</div>' +
+                    '</div>';
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                modalOverlay.scrollTop = 0;
+            };
+
+            
+            // ========== 课程详情弹窗 ==========
+            window.openCourseModal = function () {
+                modalIcon.textContent = '📚';
+                modalTitle.textContent = '21天控糖饮食计划';
+                modalTag.style.display = 'none';
+                modalBody.innerHTML =
+                    '<div style="text-align:center;margin-bottom:16px;">' +
+                    '<span style="display:inline-block;padding:5px 14px;border-radius:16px;background:#e8f5e9;color:#2e7d32;font-size:13px;font-weight:600;">🎉 首发优惠 · 限时 ¥69（原价 ¥99）</span>' +
+                    '</div>' +
+                    '<p style="font-size:14px;color:var(--text-mid);line-height:1.9;text-align:center;margin-bottom:20px;">每餐精确到克、每道菜有极简做法、6类人群适配指南、血糖异常调整方案、药物配合要点、低血糖急救——<strong>不只是一份菜谱，是一套终身控糖系统。</strong></p>' +
+                    '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:20px;">' +
+                    '<div style="background:#fff;border-radius:10px;padding:14px;border-top:3px solid #43a047;box-shadow:0 1px 6px rgba(0,0,0,0.04);"><h4 style="font-size:14px;color:#1b5e20;margin-bottom:6px;">🌱 第1周 · 控糖基础</h4><ul style="font-size:12px;color:#555;padding-left:16px;line-height:1.8;"><li>餐盘法+进食顺序+主食替换</li><li>学会看食物标签&隐形碳水</li><li>每日血糖监测+数据复盘</li></ul></div>' +
+                    '<div style="background:#fff;border-radius:10px;padding:14px;border-top:3px solid #ff9800;box-shadow:0 1px 6px rgba(0,0,0,0.04);"><h4 style="font-size:14px;color:#1b5e20;margin-bottom:6px;">🔥 第2周 · 场景实战</h4><ul style="font-size:12px;color:#555;padding-left:16px;line-height:1.8;"><li>外卖/聚餐/加班/节假日</li><li>零食&水果选择指南</li><li>运动前后血糖管理</li></ul></div>' +
+                    '<div style="background:#fff;border-radius:10px;padding:14px;border-top:3px solid #2196f3;box-shadow:0 1px 6px rgba(0,0,0,0.04);"><h4 style="font-size:14px;color:#1b5e20;margin-bottom:6px;">💎 第3周 · 自我掌控</h4><ul style="font-size:12px;color:#555;padding-left:16px;line-height:1.8;"><li>建立个人安全食物清单</li><li>药物配合+低血糖急救</li><li>21天后终身控糖方案</li></ul></div>' +
+                    '</div>' +
+                    '<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px;">' +
+                    '<span style="background:#e8f5e9;color:#2e7d32;padding:5px 12px;border-radius:16px;font-size:11px;">📋 速查卡</span>' +
+                    '<span style="background:#e8f5e9;color:#2e7d32;padding:5px 12px;border-radius:16px;font-size:11px;">👥 6类人群适配</span>' +
+                    '<span style="background:#e8f5e9;color:#2e7d32;padding:5px 12px;border-radius:16px;font-size:11px;">👨‍🍳 极简做法</span>' +
+                    '<span style="background:#e8f5e9;color:#2e7d32;padding:5px 12px;border-radius:16px;font-size:11px;">📊 GI速查表</span>' +
+                    '<span style="background:#e8f5e9;color:#2e7d32;padding:5px 12px;border-radius:16px;font-size:11px;">🆘 低血糖急救</span>' +
+                    '<span style="background:#e8f5e9;color:#2e7d32;padding:5px 12px;border-radius:16px;font-size:11px;">🛒 采购清单</span>' +
+                    '<span style="background:#e8f5e9;color:#2e7d32;padding:5px 12px;border-radius:16px;font-size:11px;">📝 血糖记录</span>' +
+                    '<span style="background:#e8f5e9;color:#2e7d32;padding:5px 12px;border-radius:16px;font-size:11px;">🖨️ 可打印</span>' +
+                    '</div>' +
+                    '<div style="text-align:center;padding:16px;background:#fff;border-radius:12px;border:2px solid #43a047;">' +
+                    '<div style="font-size:14px;color:#888;text-decoration:line-through;margin-bottom:2px;">原价 ¥99</div>' +
+                    '<div style="font-size:36px;font-weight:800;color:#2e7d32;margin-bottom:2px;">¥69</div>' +
+                    '<div style="font-size:12px;color:#888;margin-bottom:12px;">🎉 首发限时优惠 · 一次购买永久可看</div>' +
+                    '<a href="javascript:void(0)" onclick="openPurchaseModal()" style="display:block;padding:12px 20px;background:#43a047;color:#fff;font-size:15px;font-weight:700;border-radius:22px;text-decoration:none;">🛒 立即购买（首发价 ¥69）</a>' +
+                    '</div>';
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                modalOverlay.scrollTop = 0;
+            };
+
+            window.openPurchaseModal = function () {
+                modalIcon.textContent = '🛒';
+                modalTitle.textContent = '购买课程 · 首发价 ¥69';
+                modalTag.style.display = 'none';
+                modalBody.innerHTML =
+                    '<div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;">' +
+                    '<div style="text-align:center;flex:1;min-width:180px;">' +
+                    '<p style="font-size:14px;font-weight:700;color:var(--green-700);margin-bottom:10px;">1️⃣ 扫码付款 ¥69</p>' +
+                    '<img src="4b0fcd05f273463e9b8b45131ef7aa83.jpg" alt="收款码" loading="lazy" onerror="this.alt=\'收款码图片未加载\';this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';" style="width:200px;height:200px;border-radius:12px;border:2px solid #eee;object-fit:contain;">' +
+                    '<span style="display:none;width:200px;height:200px;border-radius:12px;border:2px solid #eee;align-items:center;justify-content:center;background:#fafafa;color:#999;font-size:13px;">收款码图片加载失败<br>请联系客服</span>' +
+                    '</div>' +
+                    '<div style="text-align:center;flex:1;min-width:180px;">' +
+                    '<p style="font-size:14px;font-weight:700;color:var(--green-700);margin-bottom:10px;">2️⃣ 加微信领课程</p>' +
+                    '<img src="f424a51d24728882c8d2cebce3e6bb1f.jpg" alt="微信二维码" loading="lazy" onerror="this.alt=\'微信二维码未加载\';this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';" style="width:200px;height:200px;border-radius:12px;border:2px solid #eee;object-fit:contain;">' +
+                    '<span style="display:none;width:200px;height:200px;border-radius:12px;border:2px solid #eee;align-items:center;justify-content:center;background:#fafafa;color:#999;font-size:13px;">微信二维码加载失败<br>请联系客服</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div style="background:#f9fef9;border-radius:10px;padding:14px 18px;font-size:13px;color:var(--text-mid);line-height:1.9;text-align:center;">' +
+                    '<strong>📋 购买流程：</strong> ① 扫左侧码付款 ¥69 → ② 扫右侧码加微信 → ③ 发送付款截图 → ④ 领取课程 + 拉群' +
+                    '</div>';
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                modalOverlay.scrollTop = 0;
+            };
+
+            window.toggleCard = function (card) {
+                openModal(card);
+            };
+
+            // 关闭按钮
+            modalClose.addEventListener('click', function (e) {
+                e.stopPropagation();
+                closeModal();
+            });
+
+            // 点击遮罩关闭
+            modalOverlay.addEventListener('click', function (e) {
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
+            // ESC 关闭
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+
+            // ========== 免费工具弹窗（先展示三个小卡片） ==========
+            window.openFreeTools = function (card) {
+                modalIcon.textContent = '🛠';
+                modalTitle.textContent = '免费工具';
+                modalTag.style.display = 'none';
+                showToolCards();
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                modalOverlay.scrollTop = 0;
+            };
+
+            // 展示三个工具小卡片
+            window.showToolCards = function () {
+                var cs = 'cursor:pointer;border:2px solid rgba(67,160,71,0.2);border-radius:16px;padding:28px 16px 0;text-align:center;background:#fff;transition:all 0.25s;box-shadow:0 2px 12px rgba(0,0,0,0.05);';
+                var ts = 'font-size:17px;font-weight:700;color:#1b5e20;margin:10px 0 4px;';
+                var linksHTML = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;max-width:700px;margin:24px auto 0;padding-top:18px;border-top:1px solid rgba(67,160,71,0.12);">' +
+                    '<a href="#knowledge" onclick="closeModal()" style="display:flex;align-items:center;gap:6px;padding:10px 12px;background:#f9fef9;border-radius:10px;font-size:13px;color:#2e7d32;font-weight:500;text-decoration:none;">📚 控糖知识库</a>' +
+                    '<a href="#diet" onclick="closeModal()" style="display:flex;align-items:center;gap:6px;padding:10px 12px;background:#f9fef9;border-radius:10px;font-size:13px;color:#2e7d32;font-weight:500;text-decoration:none;">🥗 饮食建议</a>' +
+                    '<a href="#exercise" onclick="closeModal()" style="display:flex;align-items:center;gap:6px;padding:10px 12px;background:#f9fef9;border-radius:10px;font-size:13px;color:#2e7d32;font-weight:500;text-decoration:none;">🏃 运动指南</a>' +
+                    '<a href="#faq" onclick="closeModal()" style="display:flex;align-items:center;gap:6px;padding:10px 12px;background:#f9fef9;border-radius:10px;font-size:13px;color:#2e7d32;font-weight:500;text-decoration:none;">❓ 常见问答</a>' +
+                    '</div>';
+                modalBody.innerHTML = '<p style="text-align:center;color:var(--text-light);font-size:14px;margin-bottom:20px;">选择一个工具开始使用</p>' +
+                    '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;max-width:700px;margin:0 auto;">' +
+                    '<div onclick="openMiniTool(\'bmi\')" style="' + cs + '">' +
+                    '<div class="icon-circle" style="margin:0 auto 8px;">🧮</div><h3 style="' + ts + '">BMI 计算器</h3><p style="font-size:13px;color:#666;">计算体质指数，评估体重风险</p>' +
+                    '<div class="card-hint">打开 →</div></div>' +
+                    '<div onclick="openMiniTool(\'glucose\')" style="' + cs + '">' +
+                    '<div class="icon-circle" style="margin:0 auto 8px;">📊</div><h3 style="' + ts + '">血糖记录器</h3><p style="font-size:13px;color:#666;">记录并追踪每日血糖变化</p>' +
+                    '<div class="card-hint">打开 →</div></div>' +
+                    '<div onclick="openMiniTool(\'gi\')" style="' + cs + '">' +
+                    '<div class="icon-circle" style="margin:0 auto 8px;">🔍</div><h3 style="' + ts + '">食物 GI 查询</h3><p style="font-size:13px;color:#666;">搜索食物升糖指数，辅助饮食</p>' +
+                    '<div class="card-hint">打开 →</div></div>' +
+                    '</div>' +
+                    '<p style="text-align:center;color:var(--text-light);font-size:14px;margin:24px 0 0;">📖 更多免费资源</p>' + linksHTML;
+            }
+
+            // 点击小卡片，切换到对应工具
+            window.openMiniTool = function (type) {
+                var title = '', content = '';
+                if (type === 'bmi') {
+                    title = '🧮 BMI 计算器';
+                    content = '<div class="tool-form">' +
+                        '<div class="form-group"><label>身高（厘米）</label><input type="number" id="bmiHeight" placeholder="例如：170" min="100" max="250" step="0.1"></div>' +
+                        '<div class="form-group"><label>体重（公斤）</label><input type="number" id="bmiWeight" placeholder="例如：70" min="30" max="300" step="0.1"></div>' +
+                        '<button class="btn btn-primary" id="bmiBtn" onclick="calcBMI()" style="width:100%;"><span class="btn-text">计算 BMI</span></button>' +
+                        '<div id="bmiResult" style="display:none;"></div></div>';
+                } else if (type === 'glucose') {
+                    title = '📊 血糖记录器';
+                    content = '<div class="tool-form">' +
+                        '<div class="tool-row"><div class="form-group"><label>日期</label><input type="date" id="glucoseDate"></div><div class="form-group"><label>时间</label><select id="glucoseTime"><option value="空腹">空腹</option><option value="早餐后">早餐后2h</option><option value="午餐前">午餐前</option><option value="午餐后">午餐后2h</option><option value="晚餐前">晚餐前</option><option value="晚餐后">晚餐后2h</option><option value="睡前">睡前</option></select></div></div>' +
+                        '<div class="tool-row"><div class="form-group"><label>血糖值（mmol/L）</label><input type="number" id="glucoseValue" placeholder="例如：6.5" min="1" max="35" step="0.1"></div><div class="form-group"><label>备注</label><input type="text" id="glucoseNote" placeholder="可选：饮食、运动等"></div></div>' +
+                        '<button class="btn btn-primary" onclick="saveGlucose()" style="width:100%;">记录血糖</button>' +
+                        '<p style="font-size:11px;color:#999;margin-top:8px;text-align:center;">🔒 数据仅保存在您的浏览器本地，不会上传至任何服务器</p>' +
+                        '<div id="glucoseStats" class="stats-bar" style="display:none;"></div>' +
+                        '<div style="display:flex;gap:8px;margin-top:8px;"><button class="btn btn-sm" onclick="exportGlucoseCSV()" style="flex:1;background:#fff;border:1px solid #ddd;color:#666;">📥 导出CSV</button><button class="btn btn-sm btn-danger" onclick="clearGlucoseData()" style="flex:1;">🗑 清空数据</button></div>' +
+                        '<div id="glucoseList"></div></div>';
+                    setTimeout(function(){ initGlucoseTool(); }, 100);
+                } else if (type === 'gi') {
+                    title = '🔍 食物 GI 查询';
+                    content = '<div class="tool-form">' +
+                        '<div class="form-group"><label>搜索食物</label><input type="text" id="giSearch" placeholder="输入食物名称筛选..." oninput="filterGI()"></div>' +
+                        '<table class="gi-table"><thead><tr><th onclick="sortGI()">食物名称 ↕</th><th>GI 值</th><th>分类</th><th>建议</th></tr></thead><tbody id="giBody"></tbody></table></div>';
+                    setTimeout(function(){ renderGITable('', document.getElementById('modalBody')); }, 100);
+                }
+
+                modalTitle.textContent = title;
+                modalBody.innerHTML = '<button onclick="modalTitle.textContent=\'免费工具\';showToolCards();" style="background:none;border:none;color:var(--green-500);font-size:14px;font-weight:600;cursor:pointer;padding:0;margin-bottom:16px;">← 返回工具列表</button>' + content;
+                modalOverlay.scrollTop = 0;
+            };
+
+            // ========== 工具弹窗（单个工具） ==========
+            window.openTool = function (card, toolType) {
+                var iconEl = card.querySelector('.icon-circle');
+                modalIcon.textContent = iconEl ? iconEl.textContent.trim() : '';
+                var title = card.querySelector('h3');
+                modalTitle.textContent = title ? title.textContent.trim() : '';
+                modalTag.style.display = 'none';
+
+                // 克隆 card-detail 内容到弹窗（保留事件绑定能力）
+                var detail = card.querySelector('.card-detail');
+                modalBody.innerHTML = detail ? detail.innerHTML : '';
+
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                modalOverlay.scrollTop = 0;
+
+                // 初始化工具
+                if (toolType === 'glucose') {
+                    initGlucoseTool();
+                } else if (toolType === 'gi') {
+                    initGITool();
+                }
+            };
+
+            // ========== BMI 计算器 ==========
+            window.calcBMI = function () {
+                var body = document.getElementById('modalBody');
+                var h = parseFloat(body.querySelector('#bmiHeight').value);
+                var w = parseFloat(body.querySelector('#bmiWeight').value);
+                var resultDiv = body.querySelector('#bmiResult');
+
+                if (!h || !w || h < 100 || h > 250 || w < 30 || w > 300) {
+                    resultDiv.style.display = 'block';
+                    resultDiv.className = 'result-box orange';
+                    resultDiv.innerHTML = '请输入有效的身高（100–250cm）和体重（30–300kg）';
+                    return;
+                }
+
+                var hM = h / 100;
+                var bmi = (w / (hM * hM)).toFixed(1);
+                var category, cssClass, advice;
+
+                if (bmi < 18.5) {
+                    category = '体重过低'; cssClass = 'orange';
+                    advice = '体重过低可能伴随营养不良和肌肉流失。对糖尿病患者来说，肌肉量不足会降低血糖处理能力。建议在医生指导下适当增加蛋白质摄入并结合抗阻训练。';
+                } else if (bmi < 24) {
+                    category = '体重正常'; cssClass = 'green';
+                    advice = '体重处于健康范围。继续保持均衡饮食和规律运动，维持当前体重是控糖的重要基础。';
+                } else if (bmi < 28) {
+                    category = '超重'; cssClass = 'orange';
+                    advice = '超重会加重胰岛素抵抗。研究显示减重 5–10% 可显著改善血糖控制。建议控制总热量摄入，每周至少 150 分钟中等强度运动。';
+                } else {
+                    category = '肥胖'; cssClass = 'red';
+                    advice = '肥胖是 2 型糖尿病最重要的可改变风险因素。减重是改善胰岛素抵抗最有效的手段。建议在医生指导下制定综合减重方案，必要时可咨询减重代谢手术。';
+                }
+
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'result-box ' + cssClass;
+                resultDiv.innerHTML = '<span class="big-num">' + bmi + '</span>BMI：' + category +
+                    '<div class="sub-text">' + advice + '</div>';
+            };
+
+            // ========== 血糖记录器 ==========
+            function getGlucoseData() {
+                try {
+                    return JSON.parse(localStorage.getItem('diabetes_glucose_log') || '[]');
+                } catch(e) { return []; }
+            }
+
+            function saveGlucoseData(data) {
+                localStorage.setItem('diabetes_glucose_log', JSON.stringify(data));
+            }
+
+            window.saveGlucose = function () {
+                var body = document.getElementById('modalBody');
+                var date = body.querySelector('#glucoseDate').value;
+                var time = body.querySelector('#glucoseTime').value;
+                var value = parseFloat(body.querySelector('#glucoseValue').value);
+                var note = body.querySelector('#glucoseNote').value.trim();
+
+                if (!date || !value || value < 1 || value > 35) {
+                    alert('请填写完整的日期和有效的血糖值（1–35 mmol/L）');
+                    return;
+                }
+
+                var data = getGlucoseData();
+                data.push({
+                    date: date,
+                    time: time,
+                    value: value,
+                    note: note,
+                    id: Date.now()
+                });
+                // 按日期倒序
+                data.sort(function(a, b) { return b.date.localeCompare(a.date) || a.time.localeCompare(b.time); });
+                saveGlucoseData(data);
+
+                // 清空输入
+                body.querySelector('#glucoseValue').value = '';
+                body.querySelector('#glucoseNote').value = '';
+
+                renderGlucoseList(body);
+            };
+
+            window.deleteGlucose = function (id) {
+                var data = getGlucoseData().filter(function(d) { return d.id !== id; });
+                saveGlucoseData(data);
+                renderGlucoseList(document.getElementById('modalBody'));
+            };
+
+            window.exportGlucoseCSV = function () {
+                var data = getGlucoseData();
+                if (data.length === 0) { alert('暂无数据可导出'); return; }
+                var csv = '﻿日期,时段,血糖值(mmol/L),备注\n';
+                data.forEach(function(d) {
+                    csv += d.date + ',' + d.time + ',' + d.value.toFixed(1) + ',"' + (d.note || '') + '"\n';
+                });
+                var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url; a.download = '血糖记录_' + new Date().toISOString().split('T')[0] + '.csv';
+                a.click(); URL.revokeObjectURL(url);
+            };
+
+            window.clearGlucoseData = function () {
+                if (confirm('确定要清空所有血糖记录吗？此操作不可恢复。')) {
+                    localStorage.removeItem('diabetes_glucose_log');
+                    renderGlucoseList(document.getElementById('modalBody'));
+                }
+            };
+
+            function renderGlucoseList(body) {
+                body = body || document.getElementById('modalBody');
+                var data = getGlucoseData();
+                var listDiv = body.querySelector('#glucoseList');
+                var statsDiv = body.querySelector('#glucoseStats');
+
+                if (data.length === 0) {
+                    statsDiv.style.display = 'none';
+                    listDiv.innerHTML = '<div class="empty-state">📋 暂无记录<br>记录你的第一条血糖数据吧</div>';
+                    return;
+                }
+
+                // 统计
+                var values = data.map(function(d) { return d.value; });
+                var avg = (values.reduce(function(a,b){return a+b;},0) / values.length).toFixed(1);
+                var min = Math.min.apply(null, values).toFixed(1);
+                var max = Math.max.apply(null, values).toFixed(1);
+                var highCount = values.filter(function(v){return v > 10;}).length;
+                var lowCount = values.filter(function(v){return v < 3.9;}).length;
+
+                statsDiv.style.display = 'flex';
+                statsDiv.innerHTML =
+                    '<div class="stat-chip"><div class="val">' + data.length + '</div><div class="lbl">总记录</div></div>' +
+                    '<div class="stat-chip"><div class="val">' + avg + '</div><div class="lbl">平均血糖</div></div>' +
+                    '<div class="stat-chip"><div class="val">' + min + '</div><div class="lbl">最低</div></div>' +
+                    '<div class="stat-chip"><div class="val">' + max + '</div><div class="lbl">最高</div></div>' +
+                    '<div class="stat-chip"><div class="val">' + highCount + '</div><div class="lbl">偏高次数</div></div>' +
+                    '<div class="stat-chip"><div class="val">' + lowCount + '</div><div class="lbl">偏低次数</div></div>';
+
+                // 列表
+                var html = '<div class="table-scroll"><table class="glucose-table"><thead><tr><th>日期</th><th>时段</th><th>血糖</th><th>备注</th><th>操作</th></tr></thead><tbody>';
+                data.forEach(function(d) {
+                    var cls = d.value > 10 ? 'high' : (d.value < 3.9 ? 'low' : '');
+                    html += '<tr>' +
+                        '<td>' + d.date + '</td>' +
+                        '<td>' + d.time + '</td>' +
+                        '<td class="' + cls + '">' + d.value.toFixed(1) + '</td>' +
+                        '<td>' + (d.note || '-') + '</td>' +
+                        '<td><button class="btn btn-danger btn-sm" onclick="deleteGlucose(' + d.id + ')">删除</button></td>' +
+                        '</tr>';
+                });
+                html += '</tbody></table></div>';
+                listDiv.innerHTML = html;
+            }
+
+            function initGlucoseTool() {
+                var body = document.getElementById('modalBody');
+                var today = new Date().toISOString().split('T')[0];
+                body.querySelector('#glucoseDate').value = today;
+                renderGlucoseList(body);
+            }
+
+            // ========== 食物 GI 查询 ==========
+            var giFoods = [
+                {name:'樱桃', gi:22, cat:'low', tip:'放心食用，每天一小碗'},
+                {name:'柚子', gi:25, cat:'low', tip:'适合糖尿病，每天2-3瓣'},
+                {name:'苹果', gi:36, cat:'low', tip:'带皮吃，每天1个中等大小'},
+                {name:'梨', gi:36, cat:'low', tip:'连皮食用，膳食纤维丰富'},
+                {name:'草莓', gi:40, cat:'low', tip:'低GI，每天8-10颗'},
+                {name:'桃子', gi:42, cat:'low', tip:'新鲜食用，不要榨汁'},
+                {name:'橙子', gi:43, cat:'low', tip:'完整食用，不要喝橙汁'},
+                {name:'葡萄', gi:46, cat:'low', tip:'适量，每天一小串'},
+                {name:'猕猴桃', gi:52, cat:'low', tip:'维生素C丰富，每天1个'},
+                {name:'香蕉', gi:52, cat:'low', tip:'选偏生的，每天≤1小根'},
+                {name:'芒果', gi:55, cat:'med', tip:'适量，每次半个'},
+                {name:'红薯', gi:54, cat:'low', tip:'代替部分主食，蒸煮最佳'},
+                {name:'山药', gi:51, cat:'low', tip:'代替部分主食，健脾益胃'},
+                {name:'玉米', gi:55, cat:'med', tip:'代替部分主食，选老玉米'},
+                {name:'燕麦（煮）', gi:55, cat:'low', tip:'选钢切燕麦，不要即食的'},
+                {name:'糙米', gi:55, cat:'low', tip:'替换白米饭，胃肠适应后再加量'},
+                {name:'全麦面包', gi:50, cat:'low', tip:'选100%全麦，看配料表'},
+                {name:'荞麦面', gi:59, cat:'med', tip:'比白面条好，适量食用'},
+                {name:'白米饭', gi:73, cat:'high', tip:'建议部分替换为糙米或杂豆'},
+                {name:'白面包', gi:75, cat:'high', tip:'尽量少吃，选全麦替代'},
+                {name:'馒头', gi:88, cat:'high', tip:'升糖很快，建议选全麦馒头'},
+                {name:'面条（白面）', gi:82, cat:'high', tip:'选荞麦面或全麦面替代'},
+                {name:'小米粥', gi:72, cat:'high', tip:'煮得越烂GI越高，少喝粥'},
+                {name:'糯米', gi:87, cat:'high', tip:'极高GI，糖尿病人避免'},
+                {name:'西瓜', gi:72, cat:'high', tip:'高GI，尽量少吃或不吃'},
+                {name:'荔枝', gi:79, cat:'high', tip:'含糖量高，不建议食用'},
+                {name:'龙眼', gi:73, cat:'high', tip:'糖分极高，避免食用'},
+                {name:'土豆（煮）', gi:66, cat:'med', tip:'可代替部分主食，不要油炸'},
+                {name:'南瓜', gi:75, cat:'high', tip:'GI较高，不要以为蔬菜就可以多吃'},
+                {name:'胡萝卜（煮）', gi:71, cat:'high', tip:'生吃比煮熟GI低，适量食用'},
+                {name:'豆浆', gi:34, cat:'low', tip:'不加糖，优质植物蛋白'},
+                {name:'牛奶', gi:27, cat:'low', tip:'选脱脂或低脂，每天250-300mL'},
+                {name:'酸奶（无糖）', gi:33, cat:'low', tip:'选无糖/低糖款，看配料表'},
+                {name:'豆腐', gi:32, cat:'low', tip:'优质蛋白，可常吃'},
+                {name:'花生', gi:14, cat:'low', tip:'低GI但高热量，每天一小把'},
+                {name:'核桃', gi:15, cat:'low', tip:'富含ω-3，每天2-3颗'}
+            ];
+
+            var giSortAsc = true;
+
+            window.filterGI = function () {
+                var body = document.getElementById('modalBody');
+                var query = body.querySelector('#giSearch').value.toLowerCase().trim();
+                renderGITable(query, body);
+            };
+
+            window.sortGI = function () {
+                var body = document.getElementById('modalBody');
+                giSortAsc = !giSortAsc;
+                giFoods.sort(function(a, b) {
+                    return giSortAsc ? a.gi - b.gi : b.gi - a.gi;
+                });
+                renderGITable(body.querySelector('#giSearch').value.toLowerCase().trim(), body);
+            };
+
+            function renderGITable(query, body) {
+                body = body || document.getElementById('modalBody');
+                var tbody = body.querySelector('#giBody');
+                var filtered = query ? giFoods.filter(function(f) {
+                    return f.name.indexOf(query) !== -1;
+                }) : giFoods;
+
+                if (filtered.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:20px;color:#999;">未找到匹配的食物</td></tr>';
+                    return;
+                }
+
+                var catLabel = {low:'低 GI', med:'中 GI', high:'高 GI'};
+                tbody.innerHTML = filtered.map(function(f) {
+                    return '<tr class="' + f.cat + '-gi">' +
+                        '<td><strong>' + f.name + '</strong></td>' +
+                        '<td>' + f.gi + '</td>' +
+                        '<td><span class="gi-badge ' + f.cat + '">' + (catLabel[f.cat] || f.cat) + '</span></td>' +
+                        '<td style="font-size:12px;color:var(--text-mid);">' + f.tip + '</td>' +
+                        '</tr>';
+                }).join('');
+            }
+
+            function initGITool() {
+                renderGITable('');
+            };
+
+
+            // ========== 键盘 & 无障碍支持 ==========
+            document.querySelectorAll('.expandable-card[onclick]').forEach(function(card) {
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('role', 'button');
+                card.setAttribute('aria-expanded', 'false');
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        card.click();
+                    }
+                });
+            });
+            // Update aria-expanded when modal opens/closes
+            var modalObserver = new MutationObserver(function() {
+                var isActive = modalOverlay.classList.contains('active');
+                var lastClicked = document.querySelector('.expandable-card:focus');
+                // Update all expandable cards
+                document.querySelectorAll('.expandable-card[onclick]').forEach(function(c) {
+                    c.setAttribute('aria-expanded', 'false');
+                });
+            });
+            modalObserver.observe(modalOverlay, { attributes: true, attributeFilter: ['class'] });
+
+            // ========== 导航栏滚动阴影 ==========
+            var navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 10) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // ========== 阅读进度条 ==========
+            var progressBar = document.getElementById('progressBar');
+            window.addEventListener('scroll', function () {
+                var scrollTop = window.scrollY;
+                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                progressBar.style.width = progress + '%';
+            });
+
+            // ========== 回到顶部按钮 ==========
+            var backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+            backToTop.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // ========== 统计数字滚动动画 ==========
+            function animateCount(el, target, suffix, duration) {
+                var start = 0, startTime = null;
+                var isDecimal = target % 1 !== 0;
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    progress = 1 - Math.pow(1 - progress, 3);
+                    var current = isDecimal ? (target * progress).toFixed(2) : Math.floor(target * progress);
+                    el.textContent = current + suffix;
+                    if (progress < 1) { requestAnimationFrame(step); }
+                    else { el.textContent = target + suffix; }
+                }
+                requestAnimationFrame(step);
+            }
+
+            var statsAnimated = false;
+            var statsSection = document.querySelector('.banner-stats');
+            if (statsSection && 'IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting && !statsAnimated) {
+                            statsAnimated = true;
+                            var nums = statsSection.querySelectorAll('.stat-num');
+                            animateCount(nums[0], 4.22, '亿', 1500);
+                            animateCount(nums[1], 1.4, '亿+', 1500);
+                            animateCount(nums[2], 50, '%', 1200);
+                            observer.disconnect();
+                        }
+                    });
+                }, { threshold: 0.5 });
+                observer.observe(statsSection);
+            }
+
+            // ========== 隐私提示条 ==========
+            var privacyBar = document.getElementById('privacyBar');
+            var privacyDismissed = localStorage.getItem('privacy_dismissed');
+            if (!privacyDismissed) {
+                setTimeout(function() { privacyBar.classList.add('show'); }, 1500);
+            }
+            window.dismissPrivacyBar = function () {
+                privacyBar.classList.remove('show');
+                localStorage.setItem('privacy_dismissed', '1');
+            };
+
+            // ========== 滚动高亮导航 ==========
+            var sections = document.querySelectorAll('section[id]');
+            var navAnchors = document.querySelectorAll('.nav-links a');
+            window.addEventListener('scroll', function () {
+                var current = '';
+                sections.forEach(function (sec) {
+                    var top = sec.offsetTop - 150;
+                    if (window.scrollY >= top) { current = sec.getAttribute('id'); }
+                });
+                navAnchors.forEach(function (a) {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href') === '#' + current) { a.classList.add('active'); }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
